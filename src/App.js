@@ -2,8 +2,9 @@ import React,{useState, useEffect} from 'react';
 import InfoBox from './InfoBox';
 import Map from './Map';
 import Table from './Table'
-import {sortData} from './utils';
+import {sortData , prettyPrintStat } from './utils';
 import LineGraph from './LineGraph0';
+
 import {MenuItem,FormControl,Select,Card,CardContent} from "@material-ui/core";
 import './App.css';
 import "leaflet/dist/leaflet.css"
@@ -108,11 +109,11 @@ function App() {
         <div className="app_stats">
           <InfoBox 
           title="Coronavirus Cases" 
-          cases={countryInfo.todayCases} 
-          total={countryInfo.cases} ></InfoBox>
+          cases={prettyPrintStat(countryInfo.todayCases)} 
+          total={prettyPrintStat(countryInfo.cases)} ></InfoBox>
         {/* Info Boxes title="coronavirus active cases*/}
           <InfoBox title="Recovered" 
-          cases={countryInfo.todayRecovered} 
+          cases={prettyPrintStat(countryInfo.todayRecovered)} 
           total={countryInfo.recovered}></InfoBox>
         {/* Info Boxes title="coronavirus recoverd */}
           <InfoBox title="Deaths" 

@@ -44,8 +44,9 @@ const casesTypeColors={
 
 //Draw circles on map with interactive tooltip
 export const showDataOnMap=( data, casesType= "cases") => 
-        data.map( ( country )=> (
-            <Circle
+        data.map( ( country, index )=> (
+            <Circle 
+                key={index}
                 center={[country.countryInfo.lat,country.countryInfo.long]}
                 fillOpacity={0.4}
                 color={casesTypeColors[casesType].hex}
@@ -69,4 +70,6 @@ export const showDataOnMap=( data, casesType= "cases") =>
         </Circle>
         ))
     
-    
+export const prettyPrintStat =( stat )  =>
+    stat ? `+${numeral(stat).format("0.0a")}`:`+0`;
+
