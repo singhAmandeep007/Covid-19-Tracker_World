@@ -1,12 +1,12 @@
 import React,{useState, useEffect} from 'react';
-import InfoBox from './InfoBox';
-import Map from './Map';
-import Table from './Table'
-import {sortData , prettyPrintStat } from './utils';
-import LineGraph from './LineGraph0';
+import InfoBox from './components/InfoBox';
+import Map from './components/Map';
+import Table from './components/Table'
+import {sortData , prettyPrintStat } from './utils/util';
+import LineGraph from './components/LineGraph';
 
 import {MenuItem,FormControl,Select,Card,CardContent} from "@material-ui/core";
-import './App.css';
+import './css/App.css';
 import "leaflet/dist/leaflet.css"
 
 function App() {

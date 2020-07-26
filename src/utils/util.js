@@ -1,13 +1,12 @@
 import React from 'react';
 import numeral from 'numeral';
-import {Circle , Popup } from "react-leaflet";
+import { Circle , Popup } from "react-leaflet";
 
 //sort data in descending order
 export const sortData=(data)=>{
     const sortedData=[...data];
 
     //sortedData.sort((a,b)=> a.cases>b.cases?-1:1)
-
     sortedData.sort((a,b)=>{
         if(a.cases>b.cases){
             return -1;
@@ -23,7 +22,7 @@ const casesTypeColors={
         hex:"#08538c",
         rgb:"rgb(204,16,52)",
         half_op:"rgba(204,16,52,0.5)",
-        multiplier:800
+        multiplier:700
     },
     recovered:{
         hex:"#7dd71d",
@@ -38,9 +37,6 @@ const casesTypeColors={
         multiplier:2000,
     },
 };
-
-
-
 
 //Draw circles on map with interactive tooltip
 export const showDataOnMap=( data, casesType= "cases") => 
