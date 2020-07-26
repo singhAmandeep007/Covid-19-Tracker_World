@@ -1,11 +1,13 @@
 .infoBox {
     /* take as much room as it can */
     flex:1;
+    cursor: pointer;
 }
 /* give all except the last child of parent */
 .infoBox:not(:last-child){
     margin-right:15px;
 }
+
 .infoBox_cases{
     color:#cc1034;
     font-weight: 600;
@@ -18,3 +20,28 @@
     font-size: 0.8rem !important;
     margin-top: 15px !important;
 }
+.infoBox--green{
+    border-top: 10px solid rgb(173, 255, 47);
+   
+    background-color: rgb(173, 255, 47,0.2) !important;
+}
+.infoBox--red{
+    border-top: 10px solid rgb(243, 28, 21);
+    
+    background-color: rgb(243, 28, 21, 0.2) !important;
+}
+.infoBox--blue{
+    border-top: 10px solid rgb(31, 79, 235);
+    
+    background-color: rgb(31, 79, 235,0.2) !important;
+}
+@media (max-width:990px){
+    .infoBox{
+        font-size: 0.2em !important;
+        text-align: justify;
+    }
+    .MuiTypography-h6 {
+        font-size: 1rem !important;
+        height:60px !important;
+    }
+  }
