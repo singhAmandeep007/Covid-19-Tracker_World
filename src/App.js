@@ -3,6 +3,7 @@ import InfoBox from './InfoBox';
 import Map from './Map';
 import Table from './Table'
 import {sortData} from './utils';
+import LineGraph from './LineGraph0'
 import {MenuItem,FormControl,Select,Card,CardContent} from "@material-ui/core";
 import './App.css';
 
@@ -45,17 +46,12 @@ function App() {
     getCountriesData();
   },[])
 
-  const generateDropdownOptions=()=>{
-     {/* loop through all countries and show a dropdown select option for each */}  
-   return (
-      countries.map((country=>{
-      //console.log(country.id)
-       return(
-         <MenuItem key={country.id}  value={country.value}>{country.name}</MenuItem>
-       )
-     }))
-   )
-  }
+  // const generateDropdownOptions=()=>{
+  //   
+  //  return (
+     
+  //  )
+  // }
 
   const onCountryChange= async (e)=>{
    const countryCode=e.target.value;
@@ -84,8 +80,15 @@ function App() {
         <FormControl className="app_dropdown">
           <Select variant="outlined"  value={selectedCountry} onChange={onCountryChange}>
             <MenuItem key="a1b2" value="worldwide">Worldwide</MenuItem>
-                  
-            {generateDropdownOptions()}
+
+            {/* loop through all countries and show a dropdown select option for each */}  
+            { countries.map(country=>{             
+              return(
+                <MenuItem key={country.id}  value={country.value}>{country.name}</MenuItem>
+              )
+              })
+            }
+            
           </Select>
         </FormControl>
 
@@ -119,6 +122,7 @@ function App() {
             <Table countries={tableData}/>
             <h3>Worldwide new cases</h3>
             {/* Graph */}
+            <LineGraph />
           </CardContent>
         </Card>
      
