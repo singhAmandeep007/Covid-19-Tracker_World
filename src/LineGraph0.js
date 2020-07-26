@@ -49,8 +49,10 @@ const options = {
 };
 
 function LineGraph({ casesType = "cases" }) {
+    //console.log(casesType)
     const[data,setData] = useState({});
-    const buildChartData= (data , casesType="cases") => {
+    const buildChartData= (data , casesType = "cases") => {
+       
         //here we create  a new array to store the data create by subtracting the previous date data
         //next date data
         //x and y represents the x axis and y axis;
@@ -82,7 +84,8 @@ function LineGraph({ casesType = "cases" }) {
             })
             .then(data=>{
                 //here we pass in the data and the term to extract specific data from the data obj
-                let chartData=buildChartData(data,"cases");
+                
+                let chartData=buildChartData(data,casesType);
                 setData(chartData);
 
                 //console.log(data)
@@ -91,7 +94,7 @@ function LineGraph({ casesType = "cases" }) {
             });
         };
         fetchData();       
-    },[]);
+    },[casesType]);
 
     return (
         <div>
@@ -102,8 +105,8 @@ function LineGraph({ casesType = "cases" }) {
                         data={{
                             datasets:[
                                 {
-                                    backgroundColor:"rgba(204,16,52,0.5",
-                                    borderColor:'#CC1034',
+                                    backgroundColor:"rgb(8, 83, 140 , 0.4)",
+                                    borderColor:'#08538c',
                                     data:data,
                                 },                        
                             ],
