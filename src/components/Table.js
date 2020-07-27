@@ -3,10 +3,16 @@ import numeral from 'numeral'
 import '../css/Table.css';
 
 function Table({countries}) {
+
+     
     return (
         <div className="table">      
-            <tbody >
-            {countries.map(({country,cases},index) =>{
+           
+            <tr className="tableHead">
+                <td>Country</td>
+                <td>Total Cases</td>
+            </tr>
+            {countries.slice(0,10).map(({country,cases},index) =>{
                 return(
                     
                 <tr key={index}>
@@ -16,7 +22,9 @@ function Table({countries}) {
                 )
                 
             })}
-            </tbody>      
+
+           
+              
         </div>
     )
 }

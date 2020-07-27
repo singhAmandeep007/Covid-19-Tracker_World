@@ -13,12 +13,15 @@ function App() {
   const[countries,setCountries]=useState([]);
   const[selectedCountry,setSelectedCountry]=useState('worldwide')
   const[countryInfo,setCountryInfo]=useState({});
+  //const[countryName,setCountryName]=useState('Worlwide')
   const[tableData,setTableData]=useState([]);
   // we pass in the center of the world
-  const[mapCenter,setMapCenter]=useState({ lat:34.80746, lng:-40.4796 });
-  const[mapZoom,setMapZoom]=useState(3);
+  const[mapCenter,setMapCenter]=useState({ lat:21.14, lng:79.088 });
+  const[mapZoom,setMapZoom]=useState(2.6);
   const[mapCountries,setMapCountries]=useState([])
   const[casesType,setCasesType]=useState('cases')
+  const[graphColor,setGraphColor]=useState('blue');
+  const colors=['blue','green','red'];
 
   useEffect(()=>{
     fetch('https://disease.sh/v3/covid-19/all')
@@ -33,7 +36,7 @@ function App() {
       await fetch('https://disease.sh/v3/covid-19/countries')
       .then((response)=>response.json())
       .then((data)=>{
-        console.log(data)
+        //console.log(data)
         const countries = data.map((country,index)=>{
           //here we return an  object and push it into countries array with map 
           //console.log(country.countryInfo._id)
@@ -46,22 +49,18 @@ function App() {
           )      
         })
         const sortedData=sortData(data);
+        //here we pass in the sorteddata to tableData state
         setTableData(sortedData);
+        //to make our dropdown selectable and get value attribute when selected
         setCountries(countries);
+
         setMapCountries(data);
       })
-
     }
     getCountriesData();
   },[])
 
-  // const generateDropdownOptions=()=>{
-  //   
-  //  return (
-     
-  //  )
-  // }
-
+ 
   const onCountryChange= async (e)=>{
    const countryCode=e.target.value;
     //https://disease.sh/v3/covid-19/all
@@ -75,9 +74,13 @@ function App() {
     .then(data=>{
       setSelectedCountry(countryCode)
       setCountryInfo(data)
-
-      setMapCenter([data.countryInfo.lat,data.countryInfo.long])
-      setMapZoom(4);
+      // console.log(selectedCountry)
+      if(data){
+        console.log('lat')
+        setMapCenter([data.countryInfo.lat,data.countryInfo.long])
+        setMapZoom(4.3);
+      }
+    
       console.log(data)
     })
   }
@@ -87,7 +90,7 @@ function App() {
       <div className="app_left">
         {/* Header */}
         <div className="app_header">
-        <h1>Covid Tracker</h1>
+        <h1>Track Covid-19</h1>
         {/* {Title + Select Input dropdown} */}
         <FormControl className="app_dropdown">
           <Select variant="outlined"  value={selectedCountry} onChange={onCountryChange}>
@@ -109,49 +112,58 @@ function App() {
       
         <div className="app_stats">
           <InfoBox
-          color={'blue'}
-          onClick={e=>setCasesType('cases')} 
+          color={colors[0]}
+          onClick={()=>{setCasesType('cases'); setGraphColor('blue');}} 
           title="Coronavirus Cases" 
           cases={prettyPrintStat(countryInfo.todayCases)} 
-          total={prettyPrintStat(countryInfo.cases)} ></InfoBox>
+          total={countryInfo.cases} ></InfoBox>
         {/* Info Boxes title="coronavirus active cases*/}
           <InfoBox 
-           color={'green'}
+           color={colors[1]}
           title="Recovered"
           active={casesType==="recovered"}
-          onClick={e=>setCasesType('recovered')} 
+          onClick={()=>{setCasesType('recovered'); setGraphColor('green');}} 
           cases={prettyPrintStat(countryInfo.todayRecovered)} 
           total={countryInfo.recovered}></InfoBox>
         {/* Info Boxes title="coronavirus recoverd */}
           <InfoBox 
-           color={'red'}
+           color={colors[2]}
           title="Deaths" 
           active={casesType==="deaths"}
-          onClick={e=>setCasesType('deaths')} 
-          cases={countryInfo.todayDeaths} 
+          onClick={()=>{setCasesType('deaths'); setGraphColor('red');}} 
+          cases={prettyPrintStat(countryInfo.todayDeaths)} 
           total={countryInfo.deaths}></InfoBox>
         {/* Info Boxes title="coronavirus deaths*/}
         </div>
  
         {/* Map */}
+        <h3 className="app_graphTitle">Overview</h3>
         <Map 
-        casesType={casesType}
+          casesType={casesType}
           center={mapCenter}
           zoom={mapZoom}
           countries={mapCountries}
+         
         />
       </div>
       
       <Card className="app_right">
           <CardContent>
-            <h3>Live Cases by Country</h3>
+            <h3 className="app_graphTitle">Top Total Cases by Country</h3>
             {/* Table */}
             <Table countries={tableData}/>
-            <h3 style={{margin:20}}>Worldwide new {casesType}</h3>
+
+            <h3 className="app_graphTitle">{selectedCountry} {casesType} Timeline</h3>
+
             {/* Graph */}
-            <LineGraph casesType={casesType}/>
+            <LineGraph 
+              className="app_graph" 
+              casesType={casesType}  
+              graphColor={graphColor} 
+              selectedCountry={selectedCountry}
+            />
           </CardContent>
-        </Card>
+      </Card>
      
      
     </div>

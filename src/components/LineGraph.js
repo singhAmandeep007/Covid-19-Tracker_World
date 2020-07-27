@@ -48,9 +48,25 @@ const options = {
     },
 };
 
-function LineGraph({ casesType = "cases" }) {
-    //console.log(casesType)
-    const[data,setData] = useState({});
+function LineGraph({ casesType = "cases", selectedCountry , graphColor ,...props }) {
+    const[data,setData] = useState([]);
+
+    //to specify color of graph according to casetype
+    const colorsObj={
+        blue:{
+            backgroundColor:"rgb(8, 83, 140 , 0.4)",
+            borderColor:'rgb(8, 83, 140)',
+        },
+        green:{
+            backgroundColor:"rgba(50, 231, 50, 0.4)",
+            borderColor:"rgb(50, 231, 50)",
+        },
+        red:{
+            backgroundColor:"rgb(204, 16, 52,0.4)",
+            borderColor:"rgb(204, 16, 52)",
+        }
+    }
+    //returns and array of objects containing x,y coordinates to generate a graph
     const buildChartData= (data , casesType = "cases") => {
        
         //here we create  a new array to store the data create by subtracting the previous date data
@@ -74,30 +90,40 @@ function LineGraph({ casesType = "cases" }) {
         }      
         return chartData;
     };
+
     useEffect(()=>{
+    const url= selectedCountry==='worldwide'
+    ?'https://disease.sh/v3/covid-19/historical/all?lastdays=120'
+    :`https://disease.sh/v3/covid-19/historical/${selectedCountry}?lastdays=120`
             //to fetch data on initial render
           //https://disease.sh/v3/covid-19/historical/all?lastdays=30
         const fetchData= async () => {
-            await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
+            await fetch(url)
             .then((response) => {
                 return response.json();
             })
             .then(data=>{
                 //here we pass in the data and the term to extract specific data from the data obj
-                
-                let chartData=buildChartData(data,casesType);
-                setData(chartData);
-
-                //console.log(data)
-                console.log(chartData);
-                
+                if(selectedCountry==='worldwide'){
+                    let chartData=buildChartData(data,casesType);
+                    setData(chartData);
+    
+                    // console.log(data)
+                    // console.log(chartData);
+                }else{
+                    let chartData=buildChartData(data.timeline,casesType);
+                    setData(chartData);
+    
+                    console.log(data)
+                    console.log(chartData);
+                }            
             });
         };
         fetchData();       
-    },[casesType]);
+    },[casesType,selectedCountry]);
 
     return (
-        <div >
+        <div className={props.className} style={{margin:'10px 0px'}}>
             
           {data && data.length > 0 ?(
                     <Line 
@@ -105,8 +131,8 @@ function LineGraph({ casesType = "cases" }) {
                         data={{
                             datasets:[
                                 {
-                                    backgroundColor:"rgb(8, 83, 140 , 0.4)",
-                                    borderColor:'#08538c',
+                                    backgroundColor:colorsObj[graphColor][`backgroundColor`],
+                                    borderColor:colorsObj[graphColor][`borderColor`],
                                     data:data,
                                 },                        
                             ],
