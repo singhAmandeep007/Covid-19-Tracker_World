@@ -9,15 +9,16 @@
 }
 
 .infoBox_cases{
+    
     color:#cc1034;
     font-weight: 600;
-    font-size: 1.75rem;
+    font-size: 1.9rem;
     margin-bottom: 0.5rem;
 }
 .infoBox_total{
    
     font-weight: 700 !important;
-    font-size: 0.8rem !important;
+    font-size: 1.2rem !important;
     margin-top: 15px !important;
 }
 .infoBox--green{
@@ -37,11 +38,14 @@
 }
 @media (max-width:990px){
     .infoBox{
-        font-size: 0.2em !important;
+        font-size: 0.8rem !important;
         text-align: justify;
     }
     .MuiTypography-h6 {
         font-size: 1rem !important;
         height:60px !important;
+    }
+    .infoBox_total{
+        font-size: 0.8rem !important;
     }
   }

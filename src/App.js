@@ -5,7 +5,9 @@ import Table from './components/Table'
 import {sortData , prettyPrintStat } from './utils/util';
 import LineGraph from './components/LineGraph';
 
-import {MenuItem,FormControl,Select,Card,CardContent} from "@material-ui/core";
+import {MenuItem,FormControl,Select,Card,CardContent,FormHelperText} from "@material-ui/core";
+
+
 import './css/App.css';
 import "leaflet/dist/leaflet.css"
 
@@ -23,7 +25,8 @@ function App() {
   const[graphColor,setGraphColor]=useState('blue');
   const colors=['blue','green','red'];
 
-  useEffect(()=>{
+  useEffect(()=>{ 
+   
     fetch('https://disease.sh/v3/covid-19/all')
     .then(response => response.json())
     .then((data) => {
@@ -78,9 +81,13 @@ function App() {
       setSelectedCountry(countryCode)
       setCountryInfo(data)
       // console.log(selectedCountry)
-      if(data){
+      if(data && countryCode !=='worldwide'){
         console.log('lat')
+        
         setMapCenter([data.countryInfo.lat,data.countryInfo.long])
+        setMapZoom(4.3);
+      }else{
+        setMapCenter([21.14,79.088])
         setMapZoom(4.3);
       }
     
@@ -93,18 +100,32 @@ function App() {
     setCountryName(el.innerHTML)
   }
 
+
+
+  
   return (
+    
     <div className="app">
+      
       <div className="app_left">
         {/* Header */}
         <div className="app_header">
         <h1>Track Covid-19</h1>
         {/* {Title + Select Input dropdown} */}
         <FormControl className="app_dropdown">
-          <Select variant="outlined" id="dropdown1" value={selectedCountry} onChange={onCountryChange}>
+        
+          <Select             
+            variant="outlined" 
+            id="dropdown1" 
+            className="menuItem"
+            value={selectedCountry} 
+            onChange={onCountryChange}
+            >
+            
             <MenuItem key="a1b2"  value="worldwide">Worldwide</MenuItem>
 
-            {/* loop through all countries and show a dropdown select option for each */}  
+            {/* loop through all countries and show a dropdown select option for each */}
+          
             { countries.map(country=>{             
               return(
                 <MenuItem key={country.id}  value={country.value}>{country.name}</MenuItem>
@@ -113,16 +134,19 @@ function App() {
             }
 
           </Select>
+          <FormHelperText>Select Country</FormHelperText>
         </FormControl>
+
 
         </div>
       
-      
+        <h3 className="app_graphTitle">Overview of {countryName}</h3>
         <div className="app_stats">
+        
           <InfoBox
           color={colors[0]}
           onClick={()=>{setCasesType('cases'); setGraphColor('blue');}} 
-          title="Coronavirus Cases" 
+          title="Confirmed Cases" 
           cases={prettyPrintStat(countryInfo.todayCases)} 
           total={countryInfo.cases} ></InfoBox>
         {/* Info Boxes title="coronavirus active cases*/}
@@ -145,7 +169,7 @@ function App() {
         </div>
  
         {/* Map */}
-          <h3 className="app_graphTitle">Overview of {countryName}</h3>
+          <h3 className="app_graphTitle">Covid-19 Impact in {countryName}</h3>
         <Map 
           casesType={casesType}
           center={mapCenter}
@@ -172,10 +196,11 @@ function App() {
             />
           </CardContent>
       </Card>
-     
-     
+  
     </div>
+
   );
+          
 }
 
 export default App;

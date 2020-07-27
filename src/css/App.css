@@ -10,8 +10,21 @@ body{
   padding:20px;
 }
 .app_dropdown {
-  background-color: white;
+  text-align: center;
+  align-items: center;
+  background-color: transparent;
 }
+
+.MuiSelect-select {
+  min-width: 300px !important;
+}
+
+.MuiPaper-root .MuiMenu-paper .MuiPopover-paper .MuiPaper-elevation8 .MuiPaper-rounded{
+  top:80px !important
+}
+
+
+
 .app_header {
   display:flex;
   align-items: center;
@@ -58,5 +71,8 @@ body{
   }
   .app_right{
     margin-top: 20px;
+  }
+  .MuiSelect-select {
+    min-width:80px !important;
   }
 }

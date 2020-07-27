@@ -1,7 +1,7 @@
 //rfce is shortcut to buid boilerplate
 import React from 'react'
 import numeral from 'numeral';
-import {Card,CardContent,Typography} from "@material-ui/core"
+import {Card,CardContent,Typography,Tooltip} from "@material-ui/core"
 import '../css/InfoBox.css';
 function InfoBox({title,cases, total,...props}) {
 //console.log(title , cases,total,props.color)
@@ -9,6 +9,7 @@ function InfoBox({title,cases, total,...props}) {
 const color= props.color;
 
     return (
+      <Tooltip title="Click to see Changes">
       <Card 
       className={`infoBox infoBox--${color}`}
       onClick={props.onClick}>
@@ -24,6 +25,7 @@ const color= props.color;
                 </Typography>
           </CardContent>
       </Card>
+      </Tooltip>
     )
 }
 
