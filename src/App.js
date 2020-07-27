@@ -13,7 +13,7 @@ function App() {
   const[countries,setCountries]=useState([]);
   const[selectedCountry,setSelectedCountry]=useState('worldwide')
   const[countryInfo,setCountryInfo]=useState({});
-  //const[countryName,setCountryName]=useState('Worlwide')
+  const[countryName,setCountryName]=useState('Worlwide')
   const[tableData,setTableData]=useState([]);
   // we pass in the center of the world
   const[mapCenter,setMapCenter]=useState({ lat:21.14, lng:79.088 });
@@ -61,7 +61,10 @@ function App() {
   },[])
 
  
+  
+
   const onCountryChange= async (e)=>{
+    console.log(e)
    const countryCode=e.target.value;
     //https://disease.sh/v3/covid-19/all
     //https://disease.sh/v3/covid-19/countries/[country_code]
@@ -83,6 +86,11 @@ function App() {
     
       console.log(data)
     })
+
+    const el = document.querySelector("#dropdown1");
+  
+    console.log(el.innerHTML)
+    setCountryName(el.innerHTML)
   }
 
   return (
@@ -93,8 +101,8 @@ function App() {
         <h1>Track Covid-19</h1>
         {/* {Title + Select Input dropdown} */}
         <FormControl className="app_dropdown">
-          <Select variant="outlined"  value={selectedCountry} onChange={onCountryChange}>
-            <MenuItem key="a1b2" value="worldwide">Worldwide</MenuItem>
+          <Select variant="outlined" id="dropdown1" value={selectedCountry} onChange={onCountryChange}>
+            <MenuItem key="a1b2"  value="worldwide">Worldwide</MenuItem>
 
             {/* loop through all countries and show a dropdown select option for each */}  
             { countries.map(country=>{             
@@ -137,7 +145,7 @@ function App() {
         </div>
  
         {/* Map */}
-        <h3 className="app_graphTitle">Overview</h3>
+          <h3 className="app_graphTitle">Overview of {countryName}</h3>
         <Map 
           casesType={casesType}
           center={mapCenter}
@@ -153,7 +161,7 @@ function App() {
             {/* Table */}
             <Table countries={tableData}/>
 
-            <h3 className="app_graphTitle">{selectedCountry} {casesType} Timeline</h3>
+            <h3 className="app_graphTitle">{countryName} {casesType} Timeline </h3>
 
             {/* Graph */}
             <LineGraph 
