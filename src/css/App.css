@@ -17,8 +17,13 @@ body{
 
 .MuiSelect-select {
   min-width: 300px !important;
+  background-color: rgba(0, 0, 0, 0.829) !important;
+  color:white !important;
+  box-shadow: 10px 10px !important;
 }
-
+.MuiSelect-icon{
+  color:white !important;
+}
 .MuiPaper-root .MuiMenu-paper .MuiPopover-paper .MuiPaper-elevation8 .MuiPaper-rounded{
   top:80px !important
 }
@@ -33,8 +38,11 @@ body{
 }
 .app_header > h1 {
   
-  color:#fc3c3c;
+  text-shadow: 2px 2px 4px #ff5555;
+  color:#ff0000;
   font-size: 2rem;
+  border-bottom: 3px solid #ff5555;
+ 
 }
 .app_left{
   flex:0.9;
@@ -62,7 +70,8 @@ body{
 .app_graphTitle{
   text-align: center;
   margin: 10px 30px;
-  border-bottom:5px solid #a7a7a7
+  border-bottom:5px solid #a7a7a7;
+  font-family:helvetica;
 }
 
 @media (max-width:990px){

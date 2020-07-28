@@ -100,24 +100,40 @@ function LineGraph({ casesType = "cases", selectedCountry , graphColor ,...props
         const fetchData= async () => {
             await fetch(url)
             .then((response) => {
-                return response.json();
+                if(response.status===404){
+                    console.log("Error");
+                    document.querySelector(".noData").textContent='No Data Available';
+                    throw new Error(`Error: ${response.status}`)         
+                } 
+                return response.json();   
+                
             })
             .then(data=>{
+                document.querySelector(".noData").textContent=`${data.country} ${casesType} Timeline` ;
                 //here we pass in the data and the term to extract specific data from the data obj
+                if(document.querySelector(".noData").textContent==='No Data Available'){
+                    document.querySelector(".noData").textContent=`${data.country} ${casesType} Timeline` ;
+                }
                 if(selectedCountry==='worldwide'){
                     let chartData=buildChartData(data,casesType);
                     setData(chartData);
-    
-                    // console.log(data)
+                    document.querySelector(".noData").textContent=`Worldwide ${casesType} Timeline` ;
+                     //console.log(data)
                     // console.log(chartData);
                 }else{
-                    let chartData=buildChartData(data.timeline,casesType);
-                    setData(chartData);
-    
-                    console.log(data)
-                    console.log(chartData);
+                    if(data.timeline){
+                        let chartData=buildChartData(data.timeline,casesType);
+                        setData(chartData);
+                        //console.log(data)
+                        //console.log(chartData);
+                    }   
                 }            
+            })
+            .catch((err) => {
+                console.log('SOMETHING WENT WRONG WITH FETCH!');
+                console.log(err);
             });
+
         };
         fetchData();       
     },[casesType,selectedCountry]);

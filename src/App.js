@@ -67,7 +67,7 @@ function App() {
   
 
   const onCountryChange= async (e)=>{
-    console.log(e)
+    //console.log(e)
    const countryCode=e.target.value;
     //https://disease.sh/v3/covid-19/all
     //https://disease.sh/v3/covid-19/countries/[country_code]
@@ -88,15 +88,16 @@ function App() {
         setMapZoom(4.3);
       }else{
         setMapCenter([21.14,79.088])
-        setMapZoom(4.3);
+        setMapZoom(5.3);
       }
     
-      console.log(data)
+      //console.log(data)
     })
 
     const el = document.querySelector("#dropdown1");
   
     console.log(el.innerHTML)
+ 
     setCountryName(el.innerHTML)
   }
 
@@ -134,7 +135,7 @@ function App() {
             }
 
           </Select>
-          <FormHelperText>Select Country</FormHelperText>
+          <FormHelperText style={{marginTop:'12px'}}>Select Country</FormHelperText>
         </FormControl>
 
 
@@ -177,6 +178,7 @@ function App() {
           countries={mapCountries}
          
         />
+      
       </div>
       
       <Card className="app_right">
@@ -185,7 +187,7 @@ function App() {
             {/* Table */}
             <Table countries={tableData}/>
 
-            <h3 className="app_graphTitle">{countryName} {casesType} Timeline </h3>
+            <h3 className="app_graphTitle noData">{countryName} {casesType} Timeline </h3>
 
             {/* Graph */}
             <LineGraph 
@@ -195,8 +197,9 @@ function App() {
               selectedCountry={selectedCountry}
             />
           </CardContent>
+        
       </Card>
-  
+        
     </div>
 
   );
