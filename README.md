@@ -1,10 +1,12 @@
 [![Generic badge](https://img.shields.io/badge/Firebase-Deployed-<COLOR>.svg)](https://covidtracker-34f49.web.app/)
 
 ```diff
-- Application Hosted on https://covidtracker-34f49.web.app/ 
++ Application Hosted on https://covidtracker-34f49.web.app/ 
 + Tracking confirmed cases , recovered and deaths for each country using disease.sh api.
-! Map representation of Covid Impact.
-# Linear Graph to show increase or decrease in cases per day.
++ Sorting Tables depending on cases,recovered and deaths.
++ Map representation of Covid Impact.
++ Linear Graph to show increase or decrease in cases per day.
+- Many features yet to be added
 @@ Hope You like It @@
 ```
 
