@@ -2,7 +2,7 @@
 import React from 'react'
 import numeral from 'numeral';
 import {Card,CardContent,Typography,Tooltip} from "@material-ui/core"
-import '../css/InfoBox.css';
+import '../../css/Dashboard/InfoBox.css';
 function InfoBox({title,cases, total,...props}) {
 //console.log(title , cases,total,props.color)
 

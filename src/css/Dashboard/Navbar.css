@@ -5,9 +5,10 @@
     background: rgba(51, 51, 51, 0.801);
     color: #fff;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     z-index: 99999;
-    padding: 1rem;
+    padding: 1rem 0rem;
+    
   }
   
   #navbar ul {
@@ -28,7 +29,7 @@
     border-radius: 5px;
   }
   #navbar .logo{
-    
+   flex:0.72;
   }
   .text-primary {
     color: #5e60f5;

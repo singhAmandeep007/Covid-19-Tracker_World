@@ -3,7 +3,7 @@ import numeral from 'numeral'
 import ArrowDropUpIcon  from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-import '../css/Table.css';
+import '../../css/Dashboard/Table.css';
 
 function Table(props) {
     //we are getting data already sorted in descending order
@@ -53,8 +53,8 @@ const sortDataAscend=(data,field)=>{
 }
 
 function ellipsify (str) {
-    if (str.length > 10) {
-        return (str.substring(0, 10) + "...");
+    if (str.length > 8) {
+        return (str.substring(0, 8) + "...");
     }
     else {
         return str;
@@ -63,15 +63,15 @@ function ellipsify (str) {
     
 console.log(data)
     return (
-        <div className="table">      
-           
+        <table className="table" >      
+         <tbody>
             <tr className="tableHead">
                 <td>Flag</td>
                 <td>Country</td>
                 
-                <td><span style={{display:'flex',alignItems:'center'}}>Total Cases <span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'cases')}/>  <ArrowDropDownIcon onClick={()=>sortDataDescd(data,'cases')} fontSize="inherit" /></span></span> </td>
-                <td><span style={{display:'flex',alignItems:'center'}}>Recovered <span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'recovered')}/>  <ArrowDropDownIcon onClick={()=>sortDataDescd(data,'recovered')} fontSize="inherit" /></span></span> </td>
-                <td><span style={{display:'flex',alignItems:'center'}}>Deaths <span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'deaths')}/>  <ArrowDropDownIcon fontSize="inherit"  onClick={()=>sortDataDescd(data,'deaths')}/></span></span> </td>
+                <td><span style={{display:'flex',alignItems:'center'}}>Total<span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'cases')}/>  <ArrowDropDownIcon onClick={()=>sortDataDescd(data,'cases')} fontSize="inherit" /></span></span> </td>
+                <td><span style={{display:'flex',alignItems:'center'}}>Recovered<span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'recovered')}/>  <ArrowDropDownIcon onClick={()=>sortDataDescd(data,'recovered')} fontSize="inherit" /></span></span> </td>
+                <td><span style={{display:'flex',alignItems:'center'}}>Deaths<span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'deaths')}/>  <ArrowDropDownIcon fontSize="inherit"  onClick={()=>sortDataDescd(data,'deaths')}/></span></span> </td>
             </tr>
 
             {data.slice(0,10).map(({countryInfo,country,cases,recovered,deaths},index) =>{
@@ -80,17 +80,17 @@ console.log(data)
                 <tr key={index}>
                     <td><img width="20px"src={countryInfo.flag}/></td>
                     <td>{ellipsify(country)}</td>
-                    <td><strong>{numeral(cases).format("0,0")}</strong></td>
-                    <td><strong>{numeral(recovered).format("0,0")}</strong></td>
-                    <td><strong>{numeral(deaths).format("0,0")}</strong></td>
+                    <td><strong>{numeral(cases).format("0a")}</strong></td>
+                    <td><strong>{numeral(recovered).format("0a")}</strong></td>
+                    <td><strong>{numeral(deaths).format("0a")}</strong></td>
                 </tr>
                 )
                 
             })}
 
-           
-              
-        </div>
+
+</tbody>
+        </table>
     )
 }
 
