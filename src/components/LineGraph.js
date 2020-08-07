@@ -36,7 +36,7 @@ const options = {
         yAxes: [
             {
                 gridLines: {
-                    display: false,
+                    display: true,
                 },
                 ticks: {
                     callbacks: function (value, index, values) {

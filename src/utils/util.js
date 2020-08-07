@@ -52,7 +52,7 @@ export const showDataOnMap=( data, casesType= "cases") =>
                     
                     Math.sqrt(country[casesType])*casesTypeColors[casesType].multiplier
                 }
-                onMouseOver={e => {
+                onclick={e => {
                     e.target.openPopup();
                   }}
                  

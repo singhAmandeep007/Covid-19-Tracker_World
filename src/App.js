@@ -4,11 +4,12 @@ import Map from './components/Map';
 import Table from './components/Table'
 import {sortData , prettyPrintStat } from './utils/util';
 import LineGraph from './components/LineGraph';
-
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import {MenuItem,FormControl,Select,Card,CardContent,FormHelperText} from "@material-ui/core";
 
 
 import './css/App.css';
+import './css/Navbar.css';
 import "leaflet/dist/leaflet.css"
 
 function App() {
@@ -106,12 +107,29 @@ function App() {
   
   return (
     
+    <div >
+      {/* navbar */}
+        <nav id="navbar">
+          <h1 className="logo">
+            <span className="text-primary">
+             Covid</span><TrendingUpIcon fontSize="large" style={{color:'rgb(173, 255, 47)'}} /><span style={{color:'rgb(243, 28, 21)'}}>Tracker</span>
+          </h1>
+          <ul>
+            <li><a href="#home">Dashboard</a></li>
+            <li><a href="#what">Precautions</a></li>
+            <li><a href="#who">Donate</a></li>
+            <li><a href="#contact">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      {/* container */}
     <div className="app">
-      
+
+      {/* left part */}
       <div className="app_left">
         {/* Header */}
         <div className="app_header">
-        <h1>Track Covid-19</h1>
+        <h1>Covid-19 Dashboard</h1>
         {/* {Title + Select Input dropdown} */}
         <FormControl className="app_dropdown">
         
@@ -137,13 +155,12 @@ function App() {
           </Select>
           <FormHelperText style={{marginTop:'12px'}}>Select Country</FormHelperText>
         </FormControl>
-
-
         </div>
       
         <h3 className="app_graphTitle">Overview of {countryName}</h3>
+
         <div className="app_stats">
-        
+       
           <InfoBox
           color={colors[0]}
           onClick={()=>{setCasesType('cases'); setGraphColor('blue');}} 
@@ -175,31 +192,32 @@ function App() {
           casesType={casesType}
           center={mapCenter}
           zoom={mapZoom}
-          countries={mapCountries}
-         
-        />
-      
+          countries={mapCountries}    
+        />      
       </div>
-      
-      <Card className="app_right">
+      {/* right part */}
+      <div className="app_right">
+      <Card className="item app_table">
           <CardContent>
             <h3 className="app_graphTitle">Top Total Cases by Country</h3>
             {/* Table */}
             <Table countries={tableData}/>
-
-            <h3 className="app_graphTitle noData">{countryName} {casesType} Timeline </h3>
-
-            {/* Graph */}
-            <LineGraph 
-              className="app_graph" 
+          </CardContent>
+      </Card>
+      <Card className="item ">
+        <CardContent>
+          {/* Graph */}
+        <h3 className="app_graphTitle noData">{countryName} {casesType} Timeline </h3>
+        <LineGraph 
+        className="app_graph"       
               casesType={casesType}  
               graphColor={graphColor} 
               selectedCountry={selectedCountry}
             />
-          </CardContent>
-        
+        </CardContent>
       </Card>
-        
+      </div>  
+    </div>
     </div>
 
   );
