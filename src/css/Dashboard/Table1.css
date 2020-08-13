@@ -1,0 +1,43 @@
+
+table {
+    justify-content: start;
+    width: 100% !important;
+    height: 31.5rem;
+    border-collapse: collapse;
+    border-spacing: 0;  
+    overflow: scroll;
+}
+table td{
+    padding:0.6rem;
+}
+table th {
+    padding:0.3rem;
+    background-color: black !important;
+    color:#ffffff;
+}
+table th, td {
+    text-align: center;
+  }
+table tr:nth-of-type(odd){
+    background-color: #f3f2f8;
+}
+.thead {
+   
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+    border:1px solid yellow;
+    font-size: inherit;
+    color:#ffffff !important;
+}
+@media (max-width:500px){
+    table,.thead{
+        font-size: 0.6rem;
+    }
+    table{
+        height: 100% !important;
+    }
+}
+

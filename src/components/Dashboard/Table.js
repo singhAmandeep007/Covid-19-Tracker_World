@@ -1,16 +1,22 @@
 import React,{useState,useEffect} from 'react'
 import numeral from 'numeral'
-import ArrowDropUpIcon  from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 
-import '../../css/Dashboard/Table.css';
+import '../../css/Dashboard/Table1.css';
 
 function Table(props) {
     //we are getting data already sorted in descending order
  const[data,setData]=useState([])
- console.log(data)
- useEffect(()=>{  
+    const[sortC,setSortC]=useState('desc')
+    const[sortR,setSortR]=useState('desc')
+    const[sortD,setSortD]=useState('desc')
+    //console.log(sortC,sortR,sortD)
+
+ //console.log(data)
+ useEffect(()=>{
+    console.log('table rerendered')
      setData(props.countries)
+
 },[props.countries])
 
 function sortByAscending(field) {
@@ -34,21 +40,39 @@ function sortByDescending(field) {
     };
 }
 const sortDataDescd=(data,field)=>{
-    console.log('descend',data, field)
+    //console.log('descend',data, field)
+    if(field==='cases'){
+        setSortC('asc')
+        
+    }else if(field==='recovered'){
+        setSortR('asc')
+    }else {
+        setSortD('asc')
+    }
+   
+
     const sortedData=[...data];
 
     //sortedData.sort((a,b)=> a.cases>b.cases?-1:1)
     sortedData.sort(sortByDescending(field))
-    console.log(sortedData)
+    //console.log(sortedData)
     setData(sortedData)
 }
 const sortDataAscend=(data,field)=>{
-    console.log('ascend' , data, field)
+    if(field==='cases'){
+        setSortC('desc')
+        
+    }else if(field==='recovered'){
+        setSortR('desc')
+    }else {
+        setSortD('desc')
+    }
+    //console.log('ascend' , data, field)
     const sortedData=[...data];
 
     //sortedData.sort((a,b)=> a.cases>b.cases?-1:1)
     sortedData.sort(sortByAscending(field))
-    console.log(sortedData)
+    //console.log(sortedData)
     setData(sortedData)
 }
 
@@ -61,24 +85,43 @@ function ellipsify (str) {
     }
 }
     
-console.log(data)
+//console.log(data)
     return (
-        <table className="table" >      
+        <table >      
          <tbody>
-            <tr className="tableHead">
-                <td>Flag</td>
-                <td>Country</td>
-                
-                <td><span style={{display:'flex',alignItems:'center'}}>Total<span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'cases')}/>  <ArrowDropDownIcon onClick={()=>sortDataDescd(data,'cases')} fontSize="inherit" /></span></span> </td>
-                <td><span style={{display:'flex',alignItems:'center'}}>Recovered<span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'recovered')}/>  <ArrowDropDownIcon onClick={()=>sortDataDescd(data,'recovered')} fontSize="inherit" /></span></span> </td>
-                <td><span style={{display:'flex',alignItems:'center'}}>Deaths<span style={{display:"inline-grid"}}>  <ArrowDropUpIcon fontSize="inherit" onClick={()=>sortDataAscend(data,'deaths')}/>  <ArrowDropDownIcon fontSize="inherit"  onClick={()=>sortDataDescd(data,'deaths')}/></span></span> </td>
+            <tr>
+                <th className="thead">Flag</th>
+                <th className="thead">Country</th>
+                <th className="thead">Total  
+                    <TableSortLabel  
+                        onClick={()=> sortC==='desc'?sortDataDescd(data,'cases'): sortDataAscend(data,'cases')}
+                        active={'false'}
+                        direction={sortC}
+                    />  
+                </th>
+                <th className="thead">Recovered
+                    <TableSortLabel  
+                        onClick={()=> sortR==='desc'?sortDataDescd(data,'recovered'): sortDataAscend(data,'recovered')}
+                        active={'false'} 
+                        direction={sortR}
+                    />  
+                   
+                </th>
+                <th className="thead">Deaths
+                    <TableSortLabel  
+                        onClick={()=> sortD==='desc'?sortDataDescd(data,'deaths'): sortDataAscend(data,'deaths')}
+                        active={'false'}
+                        direction={sortD}
+                       
+                    />  
+                    
+                </th>
             </tr>
-
             {data.slice(0,10).map(({countryInfo,country,cases,recovered,deaths},index) =>{
                 return(
                     
                 <tr key={index}>
-                    <td><img width="20px"src={countryInfo.flag}/></td>
+                    <td><img width="20px"src={countryInfo.flag} alt={countryInfo.iso3}/></td>
                     <td>{ellipsify(country)}</td>
                     <td><strong>{numeral(cases).format("0a")}</strong></td>
                     <td><strong>{numeral(recovered).format("0a")}</strong></td>

@@ -15,7 +15,7 @@ const color= props.color;
       onClick={props.onClick}>
           <CardContent>
               {/* title */}
-                <Typography  variant="h6">{title}</Typography>
+                <Typography  variant="h6" className="infoTitle">{title}</Typography>
               {/* no.of cases */}
                 <h2 style={{color:props.color}}className="infoBox_cases">{cases}</h2>
 

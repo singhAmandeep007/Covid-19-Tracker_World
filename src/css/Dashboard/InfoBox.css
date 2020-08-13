@@ -49,3 +49,24 @@
         font-size: 0.8rem !important;
     }
   }
+  @media (max-width:500px){
+    .infoBox{
+        font-size: 0.6rem !important;
+        text-align: center;
+        justify-content: center;
+    }
+    .MuiTypography-h6 {
+        
+        font-size: 1rem !important;
+        height:60px !important;
+    }
+    .infoBox_total{
+        font-size: 0.8rem !important;
+    }
+    .infoBox_cases{
+        font-size: 1.2rem !important;
+    }
+    .infoTitle{
+        font-size: 0.8rem !important;
+    }
+  }

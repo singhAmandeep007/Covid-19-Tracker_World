@@ -5,19 +5,17 @@ import Table from './Dashboard/Table';
 import LineGraph from './Dashboard/LineGraph';
 import {sortData , prettyPrintStat } from '../utils/util';
 
-import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import {MenuItem,FormControl,Select,Card,CardContent,FormHelperText} from "@material-ui/core";
 
 
 import '../css/App.css';
-import '../css/Dashboard/Navbar.css';
 import "leaflet/dist/leaflet.css"
 
 function Dashboard() {
   const[countries,setCountries]=useState([]);
   const[selectedCountry,setSelectedCountry]=useState('worldwide')
   const[countryInfo,setCountryInfo]=useState({});
-  const[countryName,setCountryName]=useState('Worlwide')
+  const[countryName,setCountryName]=useState('Worldwide')
   const[tableData,setTableData]=useState([]);
   // we pass in the center of the world
   const[mapCenter,setMapCenter]=useState({ lat:21.14, lng:79.088 });
@@ -103,32 +101,22 @@ function Dashboard() {
     setCountryName(el.innerHTML)
   }
 
-
+  
+  
 
   
   return (
     
     <div >
-      {/* navbar */}
-        <nav id="navbar">
-          <h1 className="logo">
-            <span className="text-primary">
-             Covid</span><TrendingUpIcon fontSize="large" style={{color:'rgb(173, 255, 47)'}} /><span style={{color:'rgb(243, 28, 21)'}}>Tracker</span>
-          </h1>
-          <ul>
-            <li><a href="#home">Dashboard</a></li>
-            <li><a href="#what">Precautions</a></li>
-            <li><a href="#who">Donate</a></li>
-            <li><a href="#contact">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+  
       {/* container */}
     <div className="app">
 
       {/* left part */}
       <div className="app_left">
         {/* Header */}
+        <Card className="item">
+          <CardContent >
         <div className="app_header">
         <h1>Covid-19 Dashboard</h1>
         {/* {Title + Select Input dropdown} */}
@@ -165,7 +153,7 @@ function Dashboard() {
           <InfoBox
           color={colors[0]}
           onClick={()=>{setCasesType('cases'); setGraphColor('blue');}} 
-          title="Confirmed Cases" 
+          title="Confirmed" 
           cases={prettyPrintStat(countryInfo.todayCases)} 
           total={countryInfo.cases} ></InfoBox>
         {/* Info Boxes title="coronavirus active cases*/}
@@ -173,7 +161,7 @@ function Dashboard() {
            color={colors[1]}
           title="Recovered"
           active={casesType==="recovered"}
-          onClick={()=>{setCasesType('recovered'); setGraphColor('green');}} 
+          onClick={()=>{setCasesType('recovered'); setGraphColor('green'); }} 
           cases={prettyPrintStat(countryInfo.todayRecovered)} 
           total={countryInfo.recovered}></InfoBox>
         {/* Info Boxes title="coronavirus recoverd */}
@@ -186,8 +174,11 @@ function Dashboard() {
           total={countryInfo.deaths}></InfoBox>
         {/* Info Boxes title="coronavirus deaths*/}
         </div>
- 
+        </CardContent>
+        </Card>
         {/* Map */}
+        <Card className="item">
+          <CardContent style={{borderRadius:'20px'}} >
           <h3 className="app_graphTitle">Covid-19 Impact in {countryName}</h3>
         <CreateMap 
           casesType={casesType}
@@ -196,10 +187,27 @@ function Dashboard() {
           countries={mapCountries} 
          
           countryInfo={countryInfo}  
-        />      
+        />   
+         </CardContent>
+         </Card>
+             
       </div>
       {/* right part */}
       <div className="app_right">
+      
+      <Card className="item ">
+        <CardContent>
+          {/* Graph */}
+        <h3 className="app_graphTitle noData">{countryName} {casesType} Timeline </h3>
+        <LineGraph 
+              className="app_graph"       
+              casesType={casesType}  
+              graphColor={graphColor} 
+              selectedCountry={selectedCountry}
+              
+            />
+        </CardContent>
+      </Card>
       <Card className="item app_table">
           <CardContent>
             <h3 className="app_graphTitle">Top Total Cases by Country</h3>
@@ -207,18 +215,7 @@ function Dashboard() {
             <Table countries={tableData}/>
           </CardContent>
       </Card>
-      <Card className="item ">
-        <CardContent>
-          {/* Graph */}
-        <h3 className="app_graphTitle noData">{countryName} {casesType} Timeline </h3>
-        <LineGraph 
-        className="app_graph"       
-              casesType={casesType}  
-              graphColor={graphColor} 
-              selectedCountry={selectedCountry}
-            />
-        </CardContent>
-      </Card>
+     
       </div>  
     </div>
     </div>

@@ -2,8 +2,14 @@
   margin:0;
 }
 body{
-  background-color: #f5f6fa;
+  background-color: #c5c5c5c4;
+  height: 100%;
+ 
 }
+html {
+  scroll-behavior: smooth;
+}
+
 .app {
   display:flex;
   justify-content: space-evenly;
@@ -18,7 +24,7 @@ body{
   background-color: transparent;
 }
 .MuiSelect-select {
-  min-width: 200px !important;
+  min-width: 10rem !important;
   background-color: rgba(0, 0, 0, 0.829) !important;
   color:white !important;
   box-shadow: 10px 10px !important;
@@ -26,8 +32,13 @@ body{
 .MuiSelect-icon{
   color:white !important;
 }
-.MuiPaper-root .MuiMenu-paper .MuiPopover-paper .MuiPaper-elevation8 .MuiPaper-rounded{
-  top:100px !important
+.MuiMenu-paper {
+  top:180px !important;
+  max-width: 200px !important;
+  height: 18.4rem;
+  background-color: rgba(0, 0, 0, 0.829) !important;
+  color:white !important;
+ 
 }
 
 
@@ -40,7 +51,7 @@ body{
 }
 .app_header > h1 {
   
-  text-shadow: 2px 2px 4px #a5a5a5be;
+  text-shadow: 4px 2px 4px #747373be;
   color:#2b2a2aec;
   font-size: 2rem;
 }
@@ -59,7 +70,7 @@ body{
 }
 .app_table{
 }
-.app_right .item{
+ .item{
   border-radius: 20px !important;
   box-shadow: 0 0 8px -4px rgba(0,0,0,0.5) !important;
   margin:1rem;
@@ -78,10 +89,13 @@ body{
 .app_graphTitle{
   text-align: center;
   margin: 10px 30px;
-  border-bottom:5px solid #a7a7a7;
-  font-family:helvetica;
-}
 
+  font-family:helvetica;
+  text-shadow: 2px 2px 4px #b1b1b1be;
+  background-color:#2b2a2aec;
+  color:#ffff;
+ 
+}
 @media (max-width:990px){
   .app{
     flex-direction: column;
@@ -89,12 +103,36 @@ body{
   .app_right{
     margin-top: 20px;
   }
-  .MuiSelect-select {
-    min-width:80px !important;
-  }
-}
-@media (max-width:990px){
+  /* .app_dropdown{
+    max-width:40px !important;
+    margin-right: 50px !important;
+    padding:0rem !important;
+
+  } */
   .app_header > h1 {
     font-size: 1.5rem;
+  }
+  body{
+    background: linear-gradient(141deg, #396dfab4 0%, #69fc6981 51%, #ff5252 75%);
+  }
+  .MuiSelect-select {
+    min-width: 6rem !important;
+  }
+  .MuiMenu-paper ul li{
+    width:100% !important;
+    background-color: rgba(0, 0, 0, 0.829) !important;
+    font-size: 0.6rem;
+    padding:0.1rem !important;
+    overflow: hidden !important; 
+    color:white !important;  
+    margin:0.1rem !important; 
+  }
+  .MuiMenu-paper{
+    top:225px !important;
+    max-width: 140px !important;
+    height: 18.4rem;
+  }
+  .MuiMenuItem-root{
+    min-height: 25px !important;
   }
 }
