@@ -23,17 +23,6 @@ export const sortData = (data) => {
 //Draw circles on map with interactive tooltip
 //export const showDataOnMap = (data, casesType = "cases", countryInfo) =>
     
-export const debounce=(func,delay=1000)=>{
-    let timeoutId;
-    return (...args)=>{
-        if(timeoutId){
-            clearTimeout(timeoutId)
-        }
-        timeoutId=setTimeout(()=>{
-            func.apply(null,args)
-        },delay);
-    };
-};
 
 export const prettyPrintStat = (stat) =>
     stat ? `+${numeral(stat).format("0 a")}` : `+0`;

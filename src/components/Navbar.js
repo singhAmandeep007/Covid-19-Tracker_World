@@ -17,7 +17,7 @@ export default function Navbar() {
             <li><Link to="/news">News</Link></li>
             <li><Link to="/precautions"> Precautions </Link></li>
             {/* <li><Link to="/donate">Donate</Link></li> */}
-            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/usefulLinks">Useful Links</Link></li>
       
           </ul>
         </nav>

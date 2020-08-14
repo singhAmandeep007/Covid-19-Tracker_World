@@ -1,0 +1,7 @@
+@media (max-width:760px){
+    .carosel{
+        /* padding:40px 20px !important; */
+        
+        width:25rem !important;
+    }
+}

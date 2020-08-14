@@ -1,0 +1,13 @@
+.MuiInputBase-input{
+    border-bottom:1px solid white !important;
+}
+
+@media (max-width:760px){
+
+.MuiGridListTileBar-titleWrap .MuiGridListTileBar-title {
+    font-size:0.7rem;
+}
+.MuiGridListTileBar-titleWrap .MuiGridListTileBar-subtitle{
+    font-size:0.4rem;
+}
+}
