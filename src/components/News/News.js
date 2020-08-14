@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import { fade } from '@material-ui/core/styles'; 
+
 
 //import {debounce} from '../../utils/util';
 const useStyles = makeStyles((theme) => ({
@@ -69,13 +69,14 @@ export default function News() {
     const[data,setData]=useState([])
     const[term,setTerm]=useState('coronavirus')
     const [debouncedTerm, setDebouncedTerm] = useState(term);
+   
 
     const classes = useStyles();
     //&from=2020-07-13&sortBy=publishedAt
     useEffect(() => {
       const timerId = setTimeout(() => {
         setDebouncedTerm(term);
-      }, 2000);
+      }, 700);
   
       return () => {
         clearTimeout(timerId);
@@ -83,12 +84,13 @@ export default function News() {
     }, [term]);
     useEffect(()=>{
         const  fetchNews = async ()=>{
-             await fetch(`http://newsapi.org/v2/everything?q=${debouncedTerm}&apiKey=327abb7296d442c4b028c6584384e950`)
+             await fetch(` https://gnews.io/api/v3/search?q=${debouncedTerm}&token=267280a167badea462bdd528fe6cb2a5`)
             .then(response=>response.json())
             .then(data=>{
                 console.log(data)
                 
-                const newsData = data.articles.map(({content,description,source,title,author,url,urlToImage})=>{             
+                const newsData = data.articles.map(({content,description,source,title,author,url,image})=>{  
+                      
                     return(
                       {
                         title:title,
@@ -96,7 +98,7 @@ export default function News() {
                         description: description,
                         name:source.name,
                         author:author,
-                        img:urlToImage,
+                        img:image,
                         url:url                 
                       }
                     )      
@@ -111,14 +113,15 @@ export default function News() {
           fetchNews()
         }
         
-        console.log(data)
+        
         
     },[debouncedTerm])
 
     const handleOnChange=(e)=>{   
       setTerm(e.target.value)
     }
-
+   
+   
 
   return (
     <div className={classes.root}>
@@ -145,7 +148,11 @@ export default function News() {
              
         {data.map((d,index) => (
           <GridListTile key={index} cols={2}>
-            <img src={d.img} alt={d.title} />
+            
+              <img  src={ d.img ? d.img : './nothumb.png'} alt={d.title} />
+            
+            {/* <img src={d.img} alt={d.title} /> */}
+
             <GridListTileBar
               title={d.title}
               subtitle={<span>by: {d.author}</span>}
@@ -157,6 +164,7 @@ export default function News() {
             />
           </GridListTile>
         ))}
+
       </GridList>
     </div>
   );
