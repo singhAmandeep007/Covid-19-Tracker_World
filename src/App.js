@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import News from './components/News/News';
 import Precautions from './components/Precautions/Precautions';
 import Contact from './components/Contact/Contact';
+
 function App(){
   return(  
       <BrowserRouter>

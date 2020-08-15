@@ -116,7 +116,7 @@ export default function Precautions() {
     img: {
       height: 495,
       display: 'block',
-      maxWidth: 650,
+      maxWidth: 600,
       overflow: 'hidden',
       width:'100%',
     },
@@ -198,7 +198,7 @@ export default function Precautions() {
     </div>
     </div>
 
-    <div style={{ margin:20}}>
+    <div style={{ margin:15}}>
     <Typography variant="h5" gutterBottom style={{backgroundColor:'white',padding:10}}>
     Frequently Asked Questions
       </Typography>
@@ -241,8 +241,8 @@ Call 911 or call ahead to your local emergency facility: Notify the operator tha
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel2d-content" id="panel2d-header">
+      <Accordion square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+        <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel4d-content" id="panel4d-header">
           <Typography>What is community spread?</Typography>
         </AccordionSummary>
         <AccordionDetails>

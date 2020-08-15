@@ -69,15 +69,19 @@ export default function News() {
     const[data,setData]=useState([])
     const[term,setTerm]=useState('coronavirus')
     const [debouncedTerm, setDebouncedTerm] = useState(term);
-   
+   const[spinner,setSpinner]=useState(true);
 
     const classes = useStyles();
     //&from=2020-07-13&sortBy=publishedAt
+  useEffect(()=>{
+    
+  },[])
+
+
     useEffect(() => {
       const timerId = setTimeout(() => {
         setDebouncedTerm(term);
       }, 700);
-  
       return () => {
         clearTimeout(timerId);
       };
@@ -87,10 +91,8 @@ export default function News() {
              await fetch(` https://gnews.io/api/v3/search?q=${debouncedTerm}&token=267280a167badea462bdd528fe6cb2a5`)
             .then(response=>response.json())
             .then(data=>{
-                console.log(data)
-                
+                console.log(data)              
                 const newsData = data.articles.map(({description,publishedAt,source,title,url,image})=>{  
-                      
                     return(
                       {
                         title:title,                       
@@ -101,28 +103,33 @@ export default function News() {
                         url:url                 
                       }
                     )      
-                  })
-    
+                  })    
                 setData(newsData)
-               
+                setTimeout(()=>setSpinner(false),1000)              
             })
-        }
-       
+        }      
         if (debouncedTerm) {
           fetchNews()
-        }
-        
-        
-        
+          
+        }  
     },[debouncedTerm])
+
+
 
     const handleOnChange=(e)=>{   
       setTerm(e.target.value)
     }
-   
-   
-
-  return (
+  
+    if(spinner){
+      return (
+        <div class="divLoader">
+        <svg class="svgLoader" viewBox="0 0 100 100" width="10em" height="10em">
+          <path ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="rgb(31, 79, 235)" transform="rotate(179.719 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path>
+        </svg>
+      </div>
+      )
+    }else{   
+    return (
     <div className={classes.root}>
      
       <GridList cellHeight={210}   cols={4}>
@@ -168,5 +175,6 @@ export default function News() {
 
       </GridList>
     </div>
-  );
+     );
+    }
 }
