@@ -8,12 +8,13 @@ import Precautions from './components/Precautions/Precautions';
 import Contact from './components/Contact/Contact';
 
 function App(){
+
   return(  
       <BrowserRouter>
        <div>
-       <Navbar/>
+       <Navbar />
         <Switch>
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/dashboard" component={Dashboard}  />
         <Route exact path="/">
           <Redirect to="/dashboard" />
         </Route>

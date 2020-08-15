@@ -38,7 +38,7 @@ export default function Contact() {
             <CardActionArea>
                 <CardMedia
                 className={classes.media}
-                image="https://www.mohfw.gov.in/assets/images/logo-flag.png"
+                image="./mohfw.png"
                 title="Mohfw India"
                 />
                 <CardContent>
@@ -61,7 +61,7 @@ export default function Contact() {
         <CardActionArea>
             <CardMedia
             className={classes.media}
-            image="https://lh3.googleusercontent.com/proxy/GePEij_6SIIiWFTqYom5FVftciIm0HxnCUqCaERL5SGy2Q6zUOjrJ54ozm_QK_x1Z5EyPpO-5QQupBCHO5Ir_p9hPGswIDGt9iCNBBCPyz0tG6OsQh8I6kPd3UL1R1o"
+            image="./who.png"
             title="who"
             />
     
@@ -88,7 +88,7 @@ export default function Contact() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://www.worldometers.info/img/worldometers-logo.gif"
+          image="worldometers.jpg"
           title="worldometer"
         />
         <CardContent >
@@ -110,7 +110,7 @@ export default function Contact() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://www.finddx.org/wp-content/uploads/2019/07/cdc-logo-356x219-300x185.jpg"
+          image="CDC.png"
           title="America"
         />
         <CardContent>
@@ -132,7 +132,7 @@ export default function Contact() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://echalliance.com/wp-content/uploads/2019/03/GOV-UK-logo-3col.jpg"
+          image="govuk.png"
           title="UK"
         />
         <CardContent>
@@ -154,7 +154,7 @@ export default function Contact() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university_logo_small_vertical_blue.png"
+          image="johns.jpg"
           title="John Hopkins"
         />
         <CardContent>

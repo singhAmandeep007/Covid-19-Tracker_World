@@ -34,6 +34,10 @@
   .text-primary {
     color: #5e60f5;
   }
+  #navbar li > .selected{
+    background: #93cb52;
+    border-radius: 5px;
+  }
   @media(max-width: 641px) {
     #navbar {
       flex-direction: column;
