@@ -2,8 +2,9 @@
   margin:0;
 }
 body{
-  background-color: #c5c5c5c4;
+  /* background-color: #c5c5c5c4; */
   height: 100%;
+  background: rgba(19, 28, 35, 0.863);
  
 }
 html {
@@ -115,9 +116,9 @@ html {
   .app_header > h1 {
     font-size: 1.5rem;
   }
-  body{
+  /* body{
     background: linear-gradient(141deg, #396dfab4 0%, #69fc6981 51%, #ff5252 75%);
-  }
+  } */
   .MuiSelect-select {
     min-width: 9rem !important;
   }
