@@ -21,6 +21,11 @@
     font-size: 1.2rem !important;
     margin-top: 15px !important;
 }
+.infoboxTotalspan{
+    display:block;
+    font-size:1.4em;
+    color:#41474d;
+}
 .infoBox--green{
     border-top: 10px solid rgb(173, 255, 47);
    
@@ -44,6 +49,7 @@
     .MuiTypography-h6 {
         font-size: 1rem !important;
         height:60px !important;
+        text-align: justify !important;
     }
     .infoBox_total{
         font-size: 0.8rem !important;
@@ -51,9 +57,11 @@
   }
   @media (max-width:500px){
     .infoBox{
-        font-size: 0.6rem !important;
+        font-size: 0.4rem !important;
         text-align: center;
         justify-content: center;
+       
+        margin:0 !important;
     }
     .MuiTypography-h6 {
         
@@ -61,12 +69,16 @@
         height:60px !important;
     }
     .infoBox_total{
-        font-size: 0.8rem !important;
+       
+        font-size: 0.5rem !important;
     }
     .infoBox_cases{
-        font-size: 1.2rem !important;
+        font-size: 1.25rem !important;
     }
     .infoTitle{
-        font-size: 0.8rem !important;
+        font-size: 0.7rem !important;
+    }
+    .infoboxTotalspan{
+        font-size:0.5rem !important;
     }
   }

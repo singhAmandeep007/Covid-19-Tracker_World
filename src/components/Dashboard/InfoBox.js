@@ -21,7 +21,7 @@ const color= props.color;
 
               {/* total no. cases */}
                 <Typography className="infoBox_total" >
-                <span  style={{display:'block',fontSize:'1.4em',color:'#41474d'}}>Total:</span> {numeral(total).format("0,0")}              
+                <span className="infoTotalspan" >Total:</span> {numeral(total).format("0,0")}              
                 </Typography>
           </CardContent>
       </Card>

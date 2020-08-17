@@ -4,12 +4,15 @@ import CreateMap from './Dashboard/Map';
 import Table from './Dashboard/Table';
 import LineGraph from './Dashboard/LineGraph';
 import {sortData , prettyPrintStat } from '../utils/util';
-
+import $ from 'jquery';
 import {MenuItem,FormControl,Select,Card,CardContent,FormHelperText} from "@material-ui/core";
 
 
 import '../css/App.css';
+import '../css/Heading.scss'
 import "leaflet/dist/leaflet.css"
+
+
 
 function Dashboard() {
   const[countries,setCountries]=useState([]);
@@ -62,8 +65,93 @@ function Dashboard() {
     }
     getCountriesData();
   },[])
+  //////////////////////////////////////////////////////
+useEffect(()=>{
+  var $progress = $(".progress"),
+  $bar = $(".progress__bar"),
+  $text = $(".progress__text"),
+  percent = 0,
+  update,
+  resetColors,
+  speed = 1000,
+  orange = 30,
+  yellow = 55,
+  green = 85,
+  timer;
 
- 
+resetColors = function() {
+
+$bar
+  .removeClass("progress__bar--green")
+  .removeClass("progress__bar--yellow")
+  .removeClass("progress__bar--orange")
+  .removeClass("progress__bar--blue");
+
+$progress
+  .removeClass("progress--complete");
+
+};
+
+update = function() {
+
+timer = setTimeout( function() {
+
+  percent += Math.random() * 1.8;
+  percent = parseFloat( percent.toFixed(1) );
+  
+  $text.find("em").text( percent + "%" );
+
+  if( percent >= 100 ) {
+
+    percent = 100;
+    $progress.addClass("progress--complete");
+    $bar.addClass("progress__bar--blue");
+    $text.find("em").text( "100% We Win" );
+
+  } else {
+    
+    if( percent >= green ) {
+      $bar.addClass("progress__bar--green");
+    }
+    
+    else if( percent >= yellow ) {
+      $bar.addClass("progress__bar--yellow");
+    }
+    
+    else if( percent >= orange ) {
+      $bar.addClass("progress__bar--orange");
+    }
+    
+    speed = Math.floor( Math.random() * 1000 );
+    update();
+
+  }
+
+  $bar.css({ width: percent + "%" });
+
+}, speed);
+
+};
+
+setTimeout( function() {
+
+$progress.addClass("progress--active");
+update();
+
+},1000);
+
+
+// $(document).on("click",  function(e) {
+
+// percent = 0;
+// clearTimeout( timer );
+// resetColors();
+// update();
+
+// });
+})
+   //////////////////////////////////////////////////////
+
   
 
   const onCountryChange= async (e)=>{
@@ -101,24 +189,43 @@ function Dashboard() {
     setCountryName(el.innerHTML)
   }
 
+  /////////////////////////////////////////
   
+
+
+  ////////////////////////////////////////
   
 
   
   return (
     
     <div >
-  
+  <div class="progress">
+        <b class="progress__bar">
+          <span class="progress__text">
+            Recovery Rate: <em>0%</em>
+          </span>
+        </b>
+      </div>
       {/* container */}
     <div className="app">
 
       {/* left part */}
       <div className="app_left">
         {/* Header */}
+       <div className="app_heading">
+
+      
+
+      
+
+       </div>
+
         <Card className="item">
+        <h1 style={{textAlign:'center'}}>Covid-19  <b>Dashboard</b></h1>
           <CardContent >
-        <div className="app_header">
-        <h1>Covid-19 Dashboard</h1>
+        <div  >
+        
         {/* {Title + Select Input dropdown} */}
         <FormControl className="app_dropdown">
         
@@ -142,7 +249,7 @@ function Dashboard() {
             }
 
           </Select>
-          <FormHelperText style={{marginTop:'12px'}}>Select Country</FormHelperText>
+          <FormHelperText style={{marginTop:'12px',fontWeight:'700'}}>Select Country</FormHelperText>
         </FormControl>
         </div>
       

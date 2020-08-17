@@ -116,7 +116,7 @@ export default function Precautions() {
     img: {
       height: 495,
       display: 'block',
-      maxWidth: 600,
+      
       overflow: 'hidden',
       width:'100%',
     },
@@ -145,7 +145,7 @@ export default function Precautions() {
   return (
     <div>
 <React.Fragment >
-<Container maxWidth="sm" style={{backgroundColor:'rgba(0, 0, 0, .03)'}}> 
+<Container maxWidth="md" style={{backgroundColor:'rgba(0, 0, 0, .03)'}}> 
 
 
 <Grid
@@ -153,13 +153,14 @@ export default function Precautions() {
   direction="column"
   justify="space-evenly"
   alignItems="center"
+  style={{margin:'20px 0px'}}
 >
 
 
-    <div className="carosel">
+ 
 
    
-    <div className={classes.root}>
+    <div style={{margin:'15px 0px'}} >
       <Paper square elevation={0} className={classes.header}>
         <Typography>{tutorialSteps[activeStep].label}</Typography>
       </Paper>
@@ -196,9 +197,9 @@ export default function Precautions() {
         }
       />
     </div>
-    </div>
+  
 
-    <div style={{ margin:15}}>
+    <div style={{margin:'15px 0px'}}>
     <Typography variant="h5" gutterBottom style={{backgroundColor:'white',padding:10}}>
     Frequently Asked Questions
       </Typography>
