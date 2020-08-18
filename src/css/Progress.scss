@@ -41,13 +41,17 @@ $orange: #c92f00;
   
 }
 
+.progressSection {
+  margin-top: 3rem;
+}
+
 .progress {
-  
+ 
   font-size: 1.2em;
   height: 25px;
-  
+  margin-top: 0.5rem;
   background: rgba(255,255,255,0.05);
-  border-radius: 2px;
+  border-radius: 1px;
   border: 1px solid rgba(255,255,255,0.2);
     
   &--active .progress__bar {
@@ -60,10 +64,8 @@ $orange: #c92f00;
     padding: 0 0.9em; 
     position: absolute;
     
-    em {
-      
+    em { 
       font-style: normal;
-      
     }
     
   }
@@ -74,7 +76,7 @@ $orange: #c92f00;
     font-size: 12px;
     font-weight: normal;
     text-shadow: 0 1px 1px rgba(0,0,0,0.6);
-    line-height: 21px;
+    line-height: 24px;
     
     display: block;
     position: relative;
@@ -175,7 +177,7 @@ $orange: #c92f00;
     .progress__bar {
     
       animation: none;
-      border-radius: 2px;
+      border-radius: 1px;
       
       &:after,
       &:before {
