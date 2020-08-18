@@ -19,7 +19,7 @@ const calPercentage=(totalNum,typeNum)=>{
   $bar = $(".acti"),
   $text = $(".actitext"),
   percent = 0,
-  resetColors,
+ 
   speed = 1000,
   orange = 30,
   yellow = 55,
