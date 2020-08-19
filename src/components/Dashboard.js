@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    textAlign: 'center',
+  alignItems: 'center',
+  backgroundColor: 'transparent',
+  display:'flex'
+  
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -90,7 +95,8 @@ function Dashboard() {
 
 
   const onCountryChange= async (e)=>{
-    //console.log(e)
+  
+    setCountryName(e.target.value);
     const countryCode=e.target.value;
     const url= countryCode==='worldwide'
     ?'https://disease.sh/v3/covid-19/all'
@@ -112,11 +118,6 @@ function Dashboard() {
 
     })
 
-    // const el = document.querySelector(".dropdown1");
-  
-    // console.log(el)
- 
-    // setCountryName(el.name)
   }
 
   
@@ -167,7 +168,7 @@ function Dashboard() {
         </FormControl> */}
 
       <FormControl className={classes.formControl}>
-              <InputLabel  htmlFor="uncontrolled-native">Name</InputLabel>
+              {/* <InputLabel style={{textAlign:'center' ,alignItems:'center'}} htmlFor="uncontrolled-native">Name</InputLabel> */}
               <NativeSelect
                 name={selectedCountry}
                 className="dropdown1"
@@ -179,10 +180,11 @@ function Dashboard() {
                   id: 'uncontrolled-native',
                 }}
               >
+                
                 <option  value="worldwide" name="worldwide">Worldwide</option>
                 { countries.map(country=>{             
               return(
-                <option key={country.id}  value={country.value} name={country.name} >{country.name}</option>
+                <option key={country.id}  value={country.value} >{country.name}</option>
               )
               })
             }

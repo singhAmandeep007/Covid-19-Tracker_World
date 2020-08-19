@@ -19,29 +19,20 @@ html {
 
 
 /* dropdown */
-/* .app_dropdown {
-  text-align: center;
-  align-items: center;
-  background-color: transparent;
-  display:flex !important;
-}
-.MuiSelect-select {
-  min-width: 17rem !important;
-  background-color: rgba(0, 0, 0, 0.829) !important;
-  color:white !important;
-
-}
-.MuiSelect-icon{
+.MuiNativeSelect-select {
+  /* min-width: 17rem !important; */
+  background-color: rgba(0, 0, 0, 0.721) !important;
   color:white !important;
 }
-.MuiMenu-paper {
-  top:290px !important;
+.MuiNativeSelect-icon{
+  color:white !important;
+}
+.MuiNativeSelect-select option {
  
-  height: 18.4rem;
   background-color: rgba(0, 0, 0, 0.829) !important;
   color:white !important;
  
-} */
+}
 
 
 /* header */
@@ -119,7 +110,7 @@ html {
   /* body{
     background: linear-gradient(141deg, #396dfab4 0%, #69fc6981 51%, #ff5252 75%);
   } */
-  .MuiSelect-select {
+  /* .MuiSelect-select {
     min-width: 9rem !important;
   }
   .MuiMenu-paper ul li{
@@ -138,7 +129,7 @@ html {
   }
   .MuiMenuItem-root{
     min-height: 25px !important;
-  }
+  } */
 }
 @media (max-width:500px){
   .app_stats{
