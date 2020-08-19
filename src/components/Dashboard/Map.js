@@ -36,10 +36,12 @@ function CreateMap({ countries, casesType="cases" , center , zoom , countryInfo}
     return (
         <div className="map">
             <Map center={center} zoom={zoom}  >
-            <TileLayer
+            <TileLayer 
             
-                url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
-                attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+                url='https://{s}.tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token={accessToken}'
+                attribution='<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                
+                accessToken= 'x1ygxQd0Y4VqHRYviKLGoL8dlqWfXm23j16emIMeZt2qrPW8T7RNEn7lroHW1m1T'
                 />
                 {/* function to loop and draw circles */}
 
