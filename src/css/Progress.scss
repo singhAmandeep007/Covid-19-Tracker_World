@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100italic,100,300italic,300,700italic,700);
 
 $red: #c90414;
+
 $blue: #1287cc;
 $green: #00b217;
 $yellow: #e89e00;
@@ -104,7 +105,7 @@ $orange: #c92f00;
     animation: pulse 2s ease-out infinite;
     
     @include innerColor($red);
-    
+
     &--orange {
       
       @include innerColor($orange);

@@ -4,15 +4,27 @@ import CreateMap from './Dashboard/Map';
 import Table from './Dashboard/Table';
 import LineGraph from './Dashboard/LineGraph';
 import Progress from './Progress';
-import Progress1 from './Progress1';
-import Progress2 from './Progress2';
+
 import {sortData , prettyPrintStat } from '../utils/util';
+import { makeStyles } from '@material-ui/core/styles';
+
+import NativeSelect from '@material-ui/core/NativeSelect';
+import InputLabel from '@material-ui/core/InputLabel';
 
 import {MenuItem,FormControl,Select,Card,CardContent,FormHelperText} from "@material-ui/core";
 
 import '../css/App.css';
 import "leaflet/dist/leaflet.css"
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 
 function Dashboard() {
@@ -30,6 +42,7 @@ function Dashboard() {
   const[graphColor,setGraphColor]=useState('blue');
 
   const colors=['blue','green','red'];
+  const classes = useStyles();
 
   useEffect(()=>{
     console.log('useEffect called')
@@ -99,11 +112,11 @@ function Dashboard() {
 
     })
 
-    const el = document.querySelector("#dropdown1");
+    // const el = document.querySelector(".dropdown1");
   
-    console.log(el.innerHTML)
+    // console.log(el)
  
-    setCountryName(el.innerHTML)
+    // setCountryName(el.name)
   }
 
   
@@ -127,7 +140,7 @@ function Dashboard() {
         <div >
         
         {/* {Title + Select Input dropdown} */}
-        <FormControl className="app_dropdown">
+        {/* <FormControl className="app_dropdown">
         
           <Select             
             variant="outlined" 
@@ -135,22 +148,52 @@ function Dashboard() {
             className="menuItem"
             value={selectedCountry} 
             onChange={onCountryChange}
+         
             >
             
-            <MenuItem key="a1b2"  value="worldwide">Worldwide</MenuItem>
+            <MenuItem key="a1b2"  value="worldwide">Worldwide</MenuItem> */}
 
             {/* loop through all countries and show a dropdown select option for each */}
-          
+            {/* <div className="selectBox">
             { countries.map(country=>{             
               return(
                 <MenuItem key={country.id}  value={country.value}>{country.name}</MenuItem>
               )
               })
             }
-
+            </div>
           </Select>
           <FormHelperText style={{marginTop:'12px',fontWeight:'700'}}>Select Country</FormHelperText>
-        </FormControl>
+        </FormControl> */}
+
+      <FormControl className={classes.formControl}>
+              <InputLabel  htmlFor="uncontrolled-native">Name</InputLabel>
+              <NativeSelect
+                name={selectedCountry}
+                className="dropdown1"
+                value={selectedCountry}
+                // value={selectedCountry} 
+                onChange={onCountryChange}
+                inputProps={{
+                  name: 'name',
+                  id: 'uncontrolled-native',
+                }}
+              >
+                <option  value="worldwide" name="worldwide">Worldwide</option>
+                { countries.map(country=>{             
+              return(
+                <option key={country.id}  value={country.value} name={country.name} >{country.name}</option>
+              )
+              })
+            }
+              </NativeSelect>
+              <FormHelperText>Select Country</FormHelperText>
+            </FormControl>
+
+       
+
+
+
         </div>
       
         <h3 className="app_graphTitle">Overview of {countryName}</h3>
@@ -185,9 +228,11 @@ function Dashboard() {
 
         <div  className="progressSection">
         <h3 className="app_graphTitle">Stats of {countryName}</h3>
-        <Progress1  text="Active"  type={countryInfo.active} total={countryInfo.cases}></Progress1>
-        <Progress2 text="Recovery" type={countryInfo.recovered} total={countryInfo.cases}></Progress2>
+        <Progress  text="Active"  type={countryInfo.active} total={countryInfo.cases}></Progress>
+        <Progress text="Recovery" type={countryInfo.recovered} total={countryInfo.cases}></Progress>
         <Progress text="Death" type={countryInfo.deaths} total={countryInfo.cases}></Progress>
+        
+
 
         </div>
        
@@ -197,6 +242,7 @@ function Dashboard() {
         {/* Map */}
         <Card className="item">
           <CardContent style={{borderRadius:'20px'}} >
+            
           <h3 className="app_graphTitle">Covid-19 Impact in {countryName}</h3>
         <CreateMap 
           casesType={casesType}

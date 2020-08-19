@@ -21,15 +21,22 @@ table th, td {
 table tr:nth-of-type(odd){
     background-color: #f3f2f8;
 }
+
+
+
 .thead {
    
     align-items: center;
     justify-content: center;
     font-size: 0.9rem;
 }
-.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+/* .MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
     border:1px solid yellow;
     font-size: inherit;
+    color:#ffffff !important;
+} */
+.MuiTableSortLabel-icon{
+    opacity:1 !important;
     color:#ffffff !important;
 }
 @media (max-width:500px){

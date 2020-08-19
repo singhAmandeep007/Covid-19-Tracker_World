@@ -19,7 +19,7 @@ html {
 
 
 /* dropdown */
-.app_dropdown {
+/* .app_dropdown {
   text-align: center;
   align-items: center;
   background-color: transparent;
@@ -36,12 +36,12 @@ html {
 }
 .MuiMenu-paper {
   top:290px !important;
-  /* max-width: 200px !important; */
+ 
   height: 18.4rem;
   background-color: rgba(0, 0, 0, 0.829) !important;
   color:white !important;
  
-}
+} */
 
 
 /* header */

@@ -10,6 +10,7 @@ function Table(props) {
     const[sortC,setSortC]=useState('desc')
     const[sortR,setSortR]=useState('desc')
     const[sortD,setSortD]=useState('desc')
+    const[activeArrow,setActiveArrow]=useState(false)
     //console.log(sortC,sortR,sortD)
 
  //console.log(data)
@@ -84,7 +85,20 @@ function ellipsify (str) {
         return str;
     }
 }
-    
+
+const handleClick=(num,type)=>{
+    if(num==='desc'){
+
+        sortDataDescd(data,type)
+       // setActiveArrow(!activeArrow)
+       // console.log(activeArrow)
+    }else{
+        sortDataAscend(data,type)
+        // setActiveArrow(!activeArrow)
+        // console.log(activeArrow)
+    }
+}
+
 //console.log(data)
     return (
         <table >      
@@ -94,23 +108,23 @@ function ellipsify (str) {
                 <th className="thead">Country</th>
                 <th className="thead">Total  
                     <TableSortLabel  
-                        onClick={()=> sortC==='desc'?sortDataDescd(data,'cases'): sortDataAscend(data,'cases')}
-                        active={'false'}
+                        onClick={()=> handleClick(sortC,'cases')}
+                        active={activeArrow}
                         direction={sortC}
                     />  
                 </th>
                 <th className="thead">Recovered
                     <TableSortLabel  
-                        onClick={()=> sortR==='desc'?sortDataDescd(data,'recovered'): sortDataAscend(data,'recovered')}
-                        active={'false'} 
+                        onClick={()=> handleClick(sortR,'recovered')}
+                        active={activeArrow} 
                         direction={sortR}
                     />  
                    
                 </th>
                 <th className="thead">Deaths
                     <TableSortLabel  
-                        onClick={()=> sortD==='desc'?sortDataDescd(data,'deaths'): sortDataAscend(data,'deaths')}
-                        active={'false'}
+                        onClick={()=> handleClick(sortD,'deaths')}
+                        active={activeArrow}
                         direction={sortD}
                        
                     />  
