@@ -19,9 +19,13 @@ table th, td {
     text-align: center;
   }
 table tr:nth-of-type(odd){
-    background-color: #f3f2f8;
+    color:white !important;
+    background-color: transparent;
 }
-
+table tr:nth-of-type(even){
+    color:white !important;
+    background-color: rgba(12, 19, 23, 0.979) !important;
+}
 
 
 .thead {
@@ -43,6 +47,15 @@ table tr:nth-of-type(odd){
     }
     table{
         height: 100% !important;
+    }
+    .MuiTableSortLabel-icon{
+        font-size: 0.7rem !important;
+    }
+    /* .MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+        font-size: 0.3rem !important;
+    } */
+    table td{
+        padding:0.4rem;
     }
 }
 

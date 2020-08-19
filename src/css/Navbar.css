@@ -25,17 +25,17 @@
   }
   
   #navbar ul li a:hover {
-    background: #93cb52;
+    background: #00b217;
     border-radius: 5px;
   }
   #navbar .logo{
    flex:0.72;
   }
   .text-primary {
-    color: #5e60f5;
+    color: #08538c;
   }
   #navbar li > .selected{
-    background: #93cb52;
+    background: #00b217;
     border-radius: 5px;
   }
   @media(max-width: 641px) {

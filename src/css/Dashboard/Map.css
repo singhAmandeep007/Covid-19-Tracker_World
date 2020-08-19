@@ -1,6 +1,6 @@
 .map{
     height:500px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(21, 34, 44);
     padding: 0.5rem;
     border-radius: 10px;
   
@@ -12,7 +12,8 @@
     height:100%;
 }
 .info-container{
-    width:150px;
+    width:100%;
+    
 }
 .info-flag{
     height:80px;
@@ -23,7 +24,7 @@
 .info-name{
     font-size: 20px;
     font-weight: bold;
-    color:#555;
+   
 }
 .info-flag img{
     width:100px;
@@ -34,4 +35,9 @@
 .info-deaths {
     font-size: 16px;
     margin-top: 5px;
+    font-family:sans-serif;
+}
+.leaflet-popup-content-wrapper{
+    background-color: rgba(19, 28, 35, 0.863) !important;
+    color:white !important;
 }

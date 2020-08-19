@@ -11,7 +11,7 @@ export default function Navbar() {
           <nav id="navbar">
           <h1 className="logo">
             <span className="text-primary">
-             Covid</span><TrendingUpIcon fontSize="large" style={{color:'rgb(173, 255, 47)'}} /><span style={{color:'rgb(243, 28, 21)'}}>Tracker</span>
+             Covid</span><TrendingUpIcon fontSize="large" style={{color:'#00b217'}} /><span style={{color:'#c80414'}}>Tracker</span>
           </h1>
           <ul>
             <li ><NavLink   to="/dashboard" activeClassName="selected"> Dashboard </NavLink></li>

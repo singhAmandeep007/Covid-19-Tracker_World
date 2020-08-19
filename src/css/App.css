@@ -1,3 +1,4 @@
+
 *{
   margin:0;
 }
@@ -20,11 +21,14 @@ html {
 
 /* dropdown */
 .MuiNativeSelect-select {
-  /* min-width: 17rem !important; */
-  background-color: rgba(0, 0, 0, 0.721) !important;
+ 
+  /* background-color: rgba(0, 0, 0, 0.721) !important; */
   color:white !important;
+  border:1px inset rgb(233, 232, 232) !important;
+  box-shadow:5px 5px 30px rgb(171, 171, 171);
 }
 .MuiNativeSelect-icon{
+  
   color:white !important;
 }
 .MuiNativeSelect-select option {
@@ -65,9 +69,10 @@ html {
 }
 
  .item{
-  border-radius: 20px !important;
-  box-shadow: 0 0 8px -4px rgba(0,0,0,0.5) !important;
+  border-radius: 30px !important;
+  box-shadow: 0 0 10px -2px rgba(186, 184, 184, 0.5) !important;
   margin:1rem;
+  background-color:rgba(19, 28, 35, 0.863) !important ;
 
 }
 .app_graph{ 
@@ -77,17 +82,15 @@ html {
   height: 5rem !important;
   flex-grow:1;
 }
-/* .app_graph{
-  flex-grow:1;
-}  */
+
 .app_graphTitle{
   
   text-align: center;
   margin: 15px 30px;
   border-radius: 10px;
-  font-family:helvetica;
+  /* font-family:helvetica; */
   text-shadow: 2px 2px 2px #b1b1b1be;
-  background-color:#2b2a2aec;
+  /* background-color:#2b2a2aec; */
   color:#ffff;
  
 }
@@ -98,38 +101,11 @@ html {
   .app_right{
     margin-top: 20px;
   }
-  /* .app_dropdown{
-    max-width:40px !important;
-    margin-right: 50px !important;
-    padding:0rem !important;
-
-  } */
+  
   .app_header > h1 {
     font-size: 1.5rem;
   }
-  /* body{
-    background: linear-gradient(141deg, #396dfab4 0%, #69fc6981 51%, #ff5252 75%);
-  } */
-  /* .MuiSelect-select {
-    min-width: 9rem !important;
-  }
-  .MuiMenu-paper ul li{
-    width:100% !important;
-    background-color: rgba(0, 0, 0, 0.829) !important;
-    font-size: 0.6rem;
-    padding:0.1rem !important;
-    overflow: hidden !important; 
-    color:white !important;  
-    margin:0.1rem !important; 
-  }
-  .MuiMenu-paper{
-    top:310px !important;
-    max-width: 140px !important;
-    height: 18.4rem;
-  }
-  .MuiMenuItem-root{
-    min-height: 25px !important;
-  } */
+  
 }
 @media (max-width:500px){
   .app_stats{

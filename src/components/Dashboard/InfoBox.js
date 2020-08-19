@@ -17,7 +17,7 @@ const color= props.color;
               {/* title */}
                 <Typography  variant="h6" className="infoTitle">{title}</Typography>
               {/* no.of cases */}
-                <h2 style={{color:props.color}}className="infoBox_cases">{cases}</h2>
+                <h2 className="infoBox_cases">{cases}</h2>
 
               {/* total no. cases */}
                 <Typography className="infoBox_total" >

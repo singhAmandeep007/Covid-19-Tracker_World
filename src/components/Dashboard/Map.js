@@ -37,8 +37,9 @@ function CreateMap({ countries, casesType="cases" , center , zoom , countryInfo}
         <div className="map">
             <Map center={center} zoom={zoom}  >
             <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+            
+                url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+                attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
                 />
                 {/* function to loop and draw circles */}
 
@@ -61,7 +62,7 @@ function CreateMap({ countries, casesType="cases" , center , zoom , countryInfo}
                         // position={countryInfo.lat ? [countryInfo.lat, countryInfo.long] : null}
                         
                     >
-                        <Popup >
+                        <Popup style={{backgroundColor:'rgba(0, 0, 0, 0.829)'}} >
                             <div className="info-container">
                                 <div
                                     className="info-flag"

@@ -9,9 +9,8 @@ import {sortData , prettyPrintStat } from '../utils/util';
 import { makeStyles } from '@material-ui/core/styles';
 
 import NativeSelect from '@material-ui/core/NativeSelect';
-import InputLabel from '@material-ui/core/InputLabel';
 
-import {MenuItem,FormControl,Select,Card,CardContent,FormHelperText} from "@material-ui/core";
+import {FormControl,Card,CardContent,FormHelperText} from "@material-ui/core";
 
 import '../css/App.css';
 import "leaflet/dist/leaflet.css"
@@ -136,36 +135,11 @@ function Dashboard() {
        <div className="app_heading"> </div>
 
         <Card className="item">
-        <h1 style={{textAlign:'center'}}>Covid-19  <b>Dashboard</b></h1>
+        <h1 style={{textAlign:'center',color:'white'}}>Covid-19  <b>Dashboard</b></h1>
           <CardContent >
         <div >
         
-        {/* {Title + Select Input dropdown} */}
-        {/* <FormControl className="app_dropdown">
-        
-          <Select             
-            variant="outlined" 
-            id="dropdown1" 
-            className="menuItem"
-            value={selectedCountry} 
-            onChange={onCountryChange}
-         
-            >
-            
-            <MenuItem key="a1b2"  value="worldwide">Worldwide</MenuItem> */}
-
-            {/* loop through all countries and show a dropdown select option for each */}
-            {/* <div className="selectBox">
-            { countries.map(country=>{             
-              return(
-                <MenuItem key={country.id}  value={country.value}>{country.name}</MenuItem>
-              )
-              })
-            }
-            </div>
-          </Select>
-          <FormHelperText style={{marginTop:'12px',fontWeight:'700'}}>Select Country</FormHelperText>
-        </FormControl> */}
+     
 
       <FormControl className={classes.formControl}>
               {/* <InputLabel style={{textAlign:'center' ,alignItems:'center'}} htmlFor="uncontrolled-native">Name</InputLabel> */}
@@ -189,7 +163,7 @@ function Dashboard() {
               })
             }
               </NativeSelect>
-              <FormHelperText>Select Country</FormHelperText>
+              <FormHelperText style={{color:'white'}}>Select Country</FormHelperText>
             </FormControl>
 
        
@@ -243,7 +217,7 @@ function Dashboard() {
         </Card>
         {/* Map */}
         <Card className="item">
-          <CardContent style={{borderRadius:'20px'}} >
+          <CardContent >
             
           <h3 className="app_graphTitle">Covid-19 Impact in {countryName}</h3>
         <CreateMap 
@@ -259,7 +233,7 @@ function Dashboard() {
       {/* right part */}
       <div className="app_right">
       
-      <Card className="item ">
+      <Card className="item">
         <CardContent>
           {/* Graph */}
         <h3 className="app_graphTitle noData">{countryName} {casesType} Timeline </h3>

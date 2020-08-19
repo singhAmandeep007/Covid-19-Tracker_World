@@ -10,7 +10,7 @@ function Table(props) {
     const[sortC,setSortC]=useState('desc')
     const[sortR,setSortR]=useState('desc')
     const[sortD,setSortD]=useState('desc')
-    const[activeArrow,setActiveArrow]=useState(false)
+    const[activeArrow]=useState(false)
     //console.log(sortC,sortR,sortD)
 
  //console.log(data)
