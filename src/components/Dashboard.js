@@ -181,7 +181,9 @@ function Dashboard() {
           onClick={()=>{setCasesType('cases'); setGraphColor('blue');}} 
           title="Confirmed" 
           cases={prettyPrintStat(countryInfo.todayCases)} 
-          total={countryInfo.cases} ></InfoBox>
+          total={countryInfo.cases}
+          isActive={true}
+          ></InfoBox>
         {/* Info Boxes title="coronavirus active cases*/}
           <InfoBox 
            color={colors[1]}
@@ -189,7 +191,12 @@ function Dashboard() {
           active={casesType==="recovered"}
           onClick={()=>{setCasesType('recovered'); setGraphColor('green'); }} 
           cases={prettyPrintStat(countryInfo.todayRecovered)} 
-          total={countryInfo.recovered}></InfoBox>
+          total={countryInfo.recovered}
+          isActive={false}
+          
+          >
+
+          </InfoBox>
         {/* Info Boxes title="coronavirus recoverd */}
           <InfoBox 
            color={colors[2]}
@@ -197,7 +204,9 @@ function Dashboard() {
           active={casesType==="deaths"}
           onClick={()=>{setCasesType('deaths'); setGraphColor('red');}} 
           cases={prettyPrintStat(countryInfo.todayDeaths)} 
-          total={countryInfo.deaths}></InfoBox>
+          total={countryInfo.deaths}
+          isActive={false}
+          ></InfoBox>
         {/* Info Boxes title="coronavirus deaths*/}
         </div>
 
