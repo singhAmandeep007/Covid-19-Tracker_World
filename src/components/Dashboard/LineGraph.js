@@ -6,7 +6,8 @@ import numeral from 'numeral';
 
 const options = {
     legend: {
-        display: false,
+        display: true,
+        
     },
     elements: {
         point: {
@@ -48,7 +49,7 @@ const options = {
     },
 };
 
-function LineGraph({ casesType = "cases", selectedCountry , graphColor ,...props }) {
+function LineGraph({ casesType = "cases", selectedCountry , graphColor ,countryName,...props }) {
     const[data,setData] = useState([]);
 
     //to specify color of graph according to casetype
@@ -109,23 +110,29 @@ function LineGraph({ casesType = "cases", selectedCountry , graphColor ,...props
                 
             })
             .then(data=>{
+                
+
                 document.querySelector(".noData").textContent=`${data.country} ${casesType} Timeline` ;
                 //here we pass in the data and the term to extract specific data from the data obj
                 if(document.querySelector(".noData").textContent==='No Data Available'){
                     document.querySelector(".noData").textContent=`${data.country} ${casesType} Timeline` ;
                 }
                 if(selectedCountry==='worldwide'){
+                    countryName('Worldwide')
                     let chartData=buildChartData(data,casesType);
                     setData(chartData);
                     document.querySelector(".noData").textContent=`Worldwide ${casesType} Timeline` ;
                      //console.log(data)
                     // console.log(chartData);
+                    
                 }else{
                     if(data.timeline){
+                        countryName(data.country)
                         let chartData=buildChartData(data.timeline,casesType);
                         setData(chartData);
                         //console.log(data)
                         //console.log(chartData);
+                        
                     }   
                 }            
             })
@@ -136,7 +143,7 @@ function LineGraph({ casesType = "cases", selectedCountry , graphColor ,...props
 
         };
         fetchData();       
-    },[casesType,selectedCountry]);
+    },[casesType,selectedCountry,countryName]);
 
     return (
         <div className={props.className} style={{margin:'10px 0px'}}>
@@ -150,6 +157,7 @@ function LineGraph({ casesType = "cases", selectedCountry , graphColor ,...props
                                     backgroundColor:colorsObj[graphColor][`backgroundColor`],
                                     borderColor:colorsObj[graphColor][`borderColor`],
                                     data:data,
+                                    label:`${casesType}`.toLocaleUpperCase()
                                 },                        
                             ],
                         }} 

@@ -15,7 +15,7 @@ function Table(props) {
 
  //console.log(data)
  useEffect(()=>{
-    console.log('table rerendered')
+    //console.log('table rerendered')
      setData(props.countries)
 
 },[props.countries])

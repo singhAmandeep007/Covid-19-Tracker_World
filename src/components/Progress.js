@@ -3,13 +3,6 @@ import $ from 'jquery';
 import '../css/Progress.scss'
 export default function Progress({text,total,type,...props}) {
 
-
-
-//     const activeper=
-//     const recoveredper=countryInfo.recovered
-//     const deathsper=countryInfo.deaths
-
-//     console.log(active,recovered,deaths)
 const calPercentage=(totalNum,typeNum)=>{
     return Math.ceil((typeNum/totalNum)*100)
 }
@@ -114,19 +107,22 @@ const calPercentage=(totalNum,typeNum)=>{
  
         //console.log(text,total,type)
        useEffect(()=>{
-        setTimeout( function() {
+         const timer_start=setTimeout( function() {
         
             $progress.addClass("progress--active");
          //   console.log('called update')
             update(parseInt(calPercentage(total,type)))
-            },500);
+            },0);
 
-
+//console.log(timer_start)
             return ()=>{
-              $bar.removeClass("progress__bar--green progress__bar--yellow progress__bar--orange")
+              clearTimeout(timer_start)
+              // $progress.removeClass("progress--active")
+              // $bar.removeClass("progress__bar--green progress__bar--yellow progress__bar--orange")
+
               $text.find("em").text( 0 + "%" )
               $bar.css({ width: 0 + "%" });
-
+            
             }
 
         

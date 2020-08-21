@@ -126,6 +126,7 @@ export default function Contact() {
     </Card>
     </Tooltip>
         </Grid>
+
         <Grid item xs={6} sm={3}>
         <Tooltip title="click to visit">
         <Card className={classes.root} onClick={()=>window.open(` https://www.gov.uk/government/organisations/department-of-health-and-social-care`, "_blank")}>
@@ -148,6 +149,7 @@ export default function Contact() {
     </Card>
     </Tooltip>
         </Grid>
+
         <Grid item xs={6} sm={3}>
         <Tooltip title="click to visit"> 
         <Card className={classes.root}  onClick={()=>window.open(`https://coronavirus.jhu.edu/?utm_campaign=jh20&utm_content=ow_hubinfo&utm_medium=dig_link&utm_source=jhu_properties`, "_blank")}>
@@ -167,10 +169,38 @@ export default function Contact() {
         </CardContent>
       </CardActionArea>
     
-    </Card>
-    </Tooltip>
+       </Card>
+      </Tooltip>
+    
         </Grid>
-        
+        <Grid item xs={6} sm={3}>
+        <Tooltip title="click to visit"> 
+        <Card className={classes.root}  onClick={()=>window.open(`http://www.ijcrt.org/papers/IJCRT2006293.pdf`, "_blank")}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="ijcrt.jpg"
+          title="Research Paper on Coronavirus"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Research Paper
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+          Publication : FIGHTING CORONAVIRUS THROUGH AI,
+          DATA SCIENCE AND TECHNOLOGY . This published paper discusses a lot about  How can technology help us recognize the path of virus spread, How Artificial Intelligence is helping
+fight Coronavirus, How Big Data is playing a vital role in minimizing coronavirus outbreak and many more.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    
+       </Card>
+      </Tooltip>
+    
+        </Grid>
+
+
+
       </Grid>
     </div>
   );

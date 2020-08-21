@@ -1,0 +1,24 @@
+☐ bugs to be fixed
+Todo:
+  ✔ infobox is active only 1 at a time @high @done(20-08-21 09:30)
+  ✔ add countup to total numbers @done(20-08-21 11:07)
+  ☐ map popup on country change automatically @critical
+  ✔ contact me change to contact developer @low @done(20-08-21 09:37)
+  ☐ progress bar for active and death change color at low % @high 
+  ☐ unclicked table arrow sort icon back to upwards on clicking of any one of the arrow key @high 
+  ✔ title of each card should display full name of country @critical @done(20-08-21 12:19) //find better approach
+  ☐ tutorial how to use the website @high 
+  ✔ Line graph legend added @done(20-08-21 11:39)
+  ✔ Add research paper in useful links @low @done(20-08-21 12:41)
+Todo for news:
+  ☐ better search bar @high 
+  ☐ better grid @low 
+  ☐ expand news card when clicked to view more information @high 
+
+Todo for precautions:
+  ☐ set width of slider/carousel for different screensizes
+  ☐ more faqs
+
+
+Todo for useful links:
+  ☐ better card information + formating @high 

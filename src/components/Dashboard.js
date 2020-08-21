@@ -46,16 +46,23 @@ function Dashboard() {
   const[graphColor,setGraphColor]=useState('blue');
 
   const colors=['blue','green','red'];
+
+ 
+
+  const changeCname=(name)=>{
+    setCountryName(name)
+  }
+
   const classes = useStyles();
 
   useEffect(()=>{
-    console.log('useEffect called')
+   // console.log('useEffect called')
     //get worldwide data
     const getWorldwideData=async ()=>{
      await fetch('https://disease.sh/v3/covid-19/all')
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
+        //console.log(data)
         setCountryInfo(data)
       })
     } 
@@ -65,7 +72,7 @@ function Dashboard() {
       await fetch('https://disease.sh/v3/covid-19/countries')
       .then((response)=>response.json())
       .then((data)=>{
-        console.log(data)
+        //console.log(data)
         const countriesName = data.map((country,index)=>{
           //here we return an  object and push it into countries array with map 
           //console.log(country.countryInfo._id)
@@ -95,7 +102,7 @@ function Dashboard() {
 
   const onCountryChange= async (e)=>{
   
-    setCountryName(e.target.value);
+    // setCountryName(e.target.value);
     const countryCode=e.target.value;
     const url= countryCode==='worldwide'
     ?'https://disease.sh/v3/covid-19/all'
@@ -118,9 +125,7 @@ function Dashboard() {
     })
 
   }
-
   
-
 
   return (
     
@@ -178,34 +183,32 @@ function Dashboard() {
        
           <InfoBox
           color={colors[0]}
-          onClick={()=>{setCasesType('cases'); setGraphColor('blue');}} 
+          onClick={()=>{setCasesType('cases'); setGraphColor('blue')}} 
           title="Confirmed" 
           cases={prettyPrintStat(countryInfo.todayCases)} 
           total={countryInfo.cases}
-          isActive={true}
+          active={casesType==='cases'}
+          
           ></InfoBox>
         {/* Info Boxes title="coronavirus active cases*/}
           <InfoBox 
            color={colors[1]}
           title="Recovered"
           active={casesType==="recovered"}
-          onClick={()=>{setCasesType('recovered'); setGraphColor('green'); }} 
+          onClick={()=>{setCasesType('recovered'); setGraphColor('green')}} 
           cases={prettyPrintStat(countryInfo.todayRecovered)} 
           total={countryInfo.recovered}
-          isActive={false}
-          
-          >
-
-          </InfoBox>
+        
+          ></InfoBox>
         {/* Info Boxes title="coronavirus recoverd */}
           <InfoBox 
            color={colors[2]}
           title="Deaths" 
           active={casesType==="deaths"}
-          onClick={()=>{setCasesType('deaths'); setGraphColor('red');}} 
+          onClick={()=>{setCasesType('deaths'); setGraphColor('red')}} 
           cases={prettyPrintStat(countryInfo.todayDeaths)} 
           total={countryInfo.deaths}
-          isActive={false}
+      
           ></InfoBox>
         {/* Info Boxes title="coronavirus deaths*/}
         </div>
@@ -216,9 +219,6 @@ function Dashboard() {
         <Progress  text="Active"  type={countryInfo.active} total={countryInfo.cases}></Progress>
         <Progress text="Recovery" type={countryInfo.recovered} total={countryInfo.cases}></Progress>
         <Progress text="Death" type={countryInfo.deaths} total={countryInfo.cases}></Progress>
-        
-
-
         </div>
        
 
@@ -251,6 +251,7 @@ function Dashboard() {
               casesType={casesType}  
               graphColor={graphColor} 
               selectedCountry={selectedCountry}
+              countryName={changeCname}
               
             />
         </CardContent>

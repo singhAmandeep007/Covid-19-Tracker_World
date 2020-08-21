@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -16,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'transparent',
     margin:40
   },
 
@@ -26,14 +28,15 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
+   
     color:'white',
     backgroundColor:'#2196f3',
     marginLeft: 0,
-    paddingBottom:10,
+    margin:'0px 0px 30px 0px',
+    paddingBottom:8,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
+     
       width: 'auto',
     },
   },
@@ -69,7 +72,8 @@ export default function News() {
     const[data,setData]=useState([])
     const[term,setTerm]=useState('coronavirus')
     const [debouncedTerm, setDebouncedTerm] = useState(term);
-   const[spinner,setSpinner]=useState(true);
+    const[spinner,setSpinner]=useState(true);
+    const[heading,setHeading]=useState('coronavirus')
 
     const classes = useStyles();
     //&from=2020-07-13&sortBy=publishedAt
@@ -89,9 +93,14 @@ export default function News() {
     useEffect(()=>{
         const  fetchNews = async ()=>{
              await fetch(` https://gnews.io/api/v3/search?q=${debouncedTerm}&token=267280a167badea462bdd528fe6cb2a5`)
-            .then(response=>response.json())
+             .then((response) => {
+             
+              return response.json();   
+              
+            })
             .then(data=>{
-                console.log(data)              
+                console.log(data)
+
                 const newsData = data.articles.map(({description,publishedAt,source,title,url,image})=>{  
                     return(
                       {
@@ -107,6 +116,9 @@ export default function News() {
                 setData(newsData)
                 setTimeout(()=>setSpinner(false),1000)              
             })
+            .catch(function(){
+               console.log('Error : Limit Reached Only 100 each day.')
+            })
         }      
         if (debouncedTerm) {
           fetchNews()
@@ -118,6 +130,7 @@ export default function News() {
 
     const handleOnChange=(e)=>{   
       setTerm(e.target.value)
+      setHeading(e.target.value)
     }
   
     if(spinner){
@@ -131,7 +144,15 @@ export default function News() {
     }else{   
     return (
     <div className={classes.root}>
-     
+      <Grid item xs={12} cols={4} style={{marginBottom:'50px'}}>
+           <h1 style={{textAlign:'center',color:'white'}}>Search <b>{heading}</b></h1>
+
+           <div >
+           
+           <h6 className="header"><InfoIcon></InfoIcon>type and wait for 2 second</h6>
+           </div>
+          
+        </Grid>
       <GridList cellHeight={210}   cols={4}>
       <GridListTile key="Subheader" cols={4}  style={{ height: 'auto' ,textAlign:'center' }}>
          
@@ -151,8 +172,13 @@ export default function News() {
             />
           </div>
         </GridListTile>
-             
-        {data.map((d,index) => (
+
+
+         
+       
+       
+        {data && data.length > 0 ?(
+        data.map((d,index) => (
           <GridListTile key={index} cols={2} style={{fontSize:'0.2rem'}}>
             
               <img  src={ d.img ? d.img : './nothumb.png'} alt={d.title} />
@@ -170,8 +196,8 @@ export default function News() {
                 </IconButton>
               }
             />
-          </GridListTile>
-        ))}
+          </GridListTile>)
+        )):null}
 
       </GridList>
     </div>
