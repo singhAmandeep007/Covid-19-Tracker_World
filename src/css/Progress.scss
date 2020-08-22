@@ -43,7 +43,7 @@ $orange: #c92f00;
 }
 
 .progressSection {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 
 .progress {
@@ -192,8 +192,6 @@ $orange: #c92f00;
   }
   
 }
-
-
 @keyframes pulse {
   
   0% {
@@ -205,13 +203,6 @@ $orange: #c92f00;
   }
   
 }
-
-// body, html {
-//   color: white;
-//   padding: 20px 50px;
-//   background: rgb(19,28,35);
-//   font-family: Roboto;
-// }
 
 h1 { font-weight: 900; line-height: 1em; margin: 0.5em 0; }
 h1 b { font-weight: 100; }

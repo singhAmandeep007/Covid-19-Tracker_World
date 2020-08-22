@@ -4,6 +4,7 @@ import '../css/Progress.scss'
 export default function Progress({text,total,type,...props}) {
 
 const calPercentage=(totalNum,typeNum)=>{
+  console.log(totalNum,typeNum)
     return Math.ceil((typeNum/totalNum)*100)
 }
 
@@ -14,119 +15,144 @@ const calPercentage=(totalNum,typeNum)=>{
   percent = 0,
   speed = 1000,
   start = 0,
-  orange = 30,
-  yellow = 55,
-  green = 85,
+  orange = 15,
+  yellow = 35,
+  green = 55,
+
   timer
 
- const update = (typeCase) => {
+  //console.log($progress,$bar,$text)
 
-    //console.log(typeCase)
-    timer = setTimeout( function() {
-        if(percent===typeCase){
-           // console.log('cleared')
-           clearTimeout(timer)
-           return;
-        }
-      percent = percent + 1;
-      $text.find("em").text( percent + "%" );
-    
+ const update = (stopper,id) => {
 
-      if(text==='Death'){
-
+     setTimeout( function() {
         
-        if( percent >= green ) {
-          $bar.addClass("progress__bar--red");
-        }        
-        else if( percent >= yellow ) {
-          $bar.addClass("progress__bar--yellow");
-        }       
-        else if( percent >= orange ) {
-          $bar.addClass("progress__bar--orange");
+        console.log(stopper,percent,id)
+        if(stopper===percent){
+           console.log('cleared')         
+           clearTimeout(id)
         }
-        else if( percent >= start ) {
-          $bar.addClass("progress__bar--green");
+        else{
+        percent = percent + 1;
+
+          $text.find("em").text( percent + "%" );
+    
+          if (text==='Active'){  
+            if( percent >= green ) {
+              $bar.addClass("progress__bar--green");
+            }        
+            else if( percent >= yellow ) {
+              $bar.addClass("progress__bar--yellow");
+            }       
+            else if( percent >= orange ) {
+              $bar.addClass("progress__bar--orange");
+            }
+
+            $bar.css({ width: percent + "%" });
+            speed = 100;
+            update(stopper,id);  
+          }
+
+          if (text==='Recovery'){  
+
+            if( percent >= green ) {
+              $bar.addClass("progress__bar--green");
+            }        
+            else if( percent >= yellow ) {
+              $bar.addClass("progress__bar--yellow");
+            }       
+            else if( percent >= orange ) {
+              $bar.addClass("progress__bar--orange");
+            }
+
+            $bar.css({ width: percent + "%" });
+            speed = 100;
+            update(stopper,id);  
+          }
+
+          if(text==='Death'){     
+                
+            if( percent >= green ) {
+              $bar.addClass("progress__bar--green");
+            }        
+            else if( percent >= yellow ) {
+              $bar.addClass("progress__bar--yellow");
+            }       
+            else if( percent >= orange ) {
+              $bar.addClass("progress__bar--orange");
+            }
+
+            $bar.css({ width: percent + "%" });
+            speed = 100;
+            update(stopper,id);
+          }
+          
         }
-         speed = 100;
-        update(typeCase);
-      }
-
-
-       else if (text==='Recovery') {
         
-        if( percent >= green ) {
-          $bar.addClass("progress__bar--green");
-        }        
-        else if( percent >= yellow ) {
-          $bar.addClass("progress__bar--yellow");
-        }       
-        else if( percent >= orange ) {
-          $bar.addClass("progress__bar--orange");
-        }
-       
-        
-        //speed=Math.floor( Math.random() * 1000 )
-        speed = 100;
-        update(typeCase);
-    
-      }
-
-      else if (text==='Active') {
-        
-        
-        if( percent >= green ) {
-          $bar.addClass("progress__bar--green");
-        }        
-        else if( percent >= yellow ) {
-          $bar.addClass("progress__bar--yellow");
-        }       
-        else if( percent >= orange ) {
-          $bar.addClass("progress__bar--orange");
-        }
-        //speed=Math.floor( Math.random() * 1000 )
-        speed = 100;
-        update(typeCase);
-    
-      }
-
-      else {
-    
-        percent = 100;
-        $progress.addClass("progress--complete");
-        $bar.addClass("progress__bar--blue");
-        $text.find("em").text( "100% " );
-    
-      }
-
-      $bar.css({ width: percent + "%" });
-    
-    }, speed);
+      }, speed);
     
     };
+      
+      
+
+      //   else if (text==='Recovery') {
+        
+      //   if( percent >= green ) {
+      //     $bar.addClass("progress__bar--green");
+      //   }        
+      //   else if( percent >= yellow ) {
+      //     $bar.addClass("progress__bar--yellow");
+      //   }       
+      //   else if( percent >= orange ) {
+      //     $bar.addClass("progress__bar--orange");
+      //   }
+      //   //speed=Math.floor( Math.random() * 1000 )
+      //   speed = 100;
+      //   update(typeCase);    
+      //  }
+
+      // else {
+    
+      //   percent = 100;
+      //   $progress.addClass("progress--complete");
+      //   $bar.addClass("progress__bar--blue");
+      //   $text.find("em").text( "100% " );
+    
+      // }
+
+     
+    
+    
 
  
         //console.log(text,total,type)
-       useEffect(()=>{
-         const timer_start=setTimeout( function() {
-        
-            $progress.addClass("progress--active");
-         //   console.log('called update')
-            update(parseInt(calPercentage(total,type)))
-            },0);
+      useEffect(()=>{
+          if( total && type ){
+            let stopper = parseInt(calPercentage(total,type))
+            console.log(stopper)
 
-//console.log(timer_start)
+            let id = setTimeout( function() {
+        
+              $progress.addClass("progress--active");
+              //console.log('called update')
+              update(stopper,id)
+  
+              },1000);
+          }
+            //console.log(timer_start)
             return ()=>{
-              clearTimeout(timer_start)
-              // $progress.removeClass("progress--active")
-              // $bar.removeClass("progress__bar--green progress__bar--yellow progress__bar--orange")
 
-              $text.find("em").text( 0 + "%" )
-              $bar.css({ width: 0 + "%" });
+              if(total && type ){
+                $text.find("em").text( 0 + "%" )
+                $bar.css({ width: 0 + "%" });
+                $progress.removeClass("progress--active")
+                $bar.removeClass("progress__bar--green progress__bar--yellow progress__bar--orange")
+  
+                
+              }         
             
-            }
-
-        
-       },[type,total])
+            }      
+      },[type,total])
         
 
     return (
