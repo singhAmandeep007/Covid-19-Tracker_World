@@ -4,7 +4,7 @@ import '../css/Progress.scss'
 export default function Progress({text,total,type,...props}) {
 
 const calPercentage=(totalNum,typeNum)=>{
-  console.log(totalNum,typeNum)
+  //console.log(totalNum,typeNum)
     return Math.ceil((typeNum/totalNum)*100)
 }
 
@@ -27,9 +27,9 @@ const calPercentage=(totalNum,typeNum)=>{
 
      setTimeout( function() {
         
-        console.log(stopper,percent,id)
+       // console.log(stopper,percent,id)
         if(stopper===percent){
-           console.log('cleared')         
+           //console.log('cleared')         
            clearTimeout(id)
         }
         else{
@@ -129,7 +129,7 @@ const calPercentage=(totalNum,typeNum)=>{
       useEffect(()=>{
           if( total && type ){
             let stopper = parseInt(calPercentage(total,type))
-            console.log(stopper)
+            //console.log(stopper)
 
             let id = setTimeout( function() {
         
