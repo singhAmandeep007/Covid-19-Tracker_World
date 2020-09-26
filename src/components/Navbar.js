@@ -17,7 +17,6 @@ export default function Navbar() {
             <li ><NavLink   to="/dashboard" activeClassName="selected"> Dashboard </NavLink></li>
             <li><NavLink to="/news" activeClassName="selected">News</NavLink></li>
             <li><NavLink to="/precautions" activeClassName="selected"> Precautions </NavLink></li>
-            {/* <li><Link to="/donate">Donate</Link></li> */}
             <li><NavLink to="/usefulLinks" activeClassName="selected">Useful Links</NavLink></li>
       
           </ul>

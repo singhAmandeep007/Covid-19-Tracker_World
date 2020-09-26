@@ -11,7 +11,6 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import './News.css'
 
-//import {debounce} from '../../utils/util';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -76,10 +75,6 @@ export default function News() {
     const[heading,setHeading]=useState('coronavirus')
 
     const classes = useStyles();
-    //&from=2020-07-13&sortBy=publishedAt
-  useEffect(()=>{
-    
-  },[])
 
 
     useEffect(() => {

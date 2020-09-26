@@ -2,15 +2,8 @@ import React   from 'react';
 import "../../css/Dashboard/Map.css"
 import { Map , TileLayer , Circle, Popup } from "react-leaflet";
 import numeral from 'numeral';
-// import { showDataOnMap } from '../../utils/util';
 function CreateMap({ countries, casesType="cases" , center , zoom , countryInfo}) {
-    //console.log(countries)
-    //console.log(countryInfo)
-    // useEffect(() => {
-    //     // Update the document title using the browser API
-    //     const c= document.querySelector('.circles')
-    //    //console.log(c)
-    // });
+  
     
     const casesTypeColors = {
         cases: {
@@ -60,8 +53,7 @@ function CreateMap({ countries, casesType="cases" , center , zoom , countryInfo}
                         onclick={e => {
                             e.target.openPopup();
                         }}
-                        // position={[countryInfo.lat,countryInfo.long]}
-                        // position={countryInfo.lat ? [countryInfo.lat, countryInfo.long] : null}
+                       
                         
                     >
                         <Popup style={{backgroundColor:'rgba(0, 0, 0, 0.829)'}} >

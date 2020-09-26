@@ -93,32 +93,7 @@ const calPercentage=(totalNum,typeNum)=>{
     
     };
       
-      
-
-      //   else if (text==='Recovery') {
-        
-      //   if( percent >= green ) {
-      //     $bar.addClass("progress__bar--green");
-      //   }        
-      //   else if( percent >= yellow ) {
-      //     $bar.addClass("progress__bar--yellow");
-      //   }       
-      //   else if( percent >= orange ) {
-      //     $bar.addClass("progress__bar--orange");
-      //   }
-      //   //speed=Math.floor( Math.random() * 1000 )
-      //   speed = 100;
-      //   update(typeCase);    
-      //  }
-
-      // else {
     
-      //   percent = 100;
-      //   $progress.addClass("progress--complete");
-      //   $bar.addClass("progress__bar--blue");
-      //   $text.find("em").text( "100% " );
-    
-      // }
 
      
     

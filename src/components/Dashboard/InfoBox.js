@@ -1,6 +1,5 @@
 //rfce is shortcut to buid boilerplate
 import React from 'react'
-//import numeral from 'numeral';
 import CountUp from "react-countup";
 
 import {Card,CardContent,Typography,Tooltip} from "@material-ui/core"
@@ -11,11 +10,6 @@ const activate = active ? `isActive--${props.color}` :'';
 function handleClick(){
   props.onClick()  
 }
-// const {countUp}=useCountUp({
-//   duration:10,
-//   end:total
-// })
-//console.log(total)
       return (
         
       <Tooltip title="Click to see Changes">
@@ -23,7 +17,7 @@ function handleClick(){
       <Card 
       className={`infoBox infoBox--${props.color} isHighlighted--${props.color}  ${activate}`}
       onClick={handleClick}
-     >
+      >
           <CardContent>
               {/* title */}
                 <Typography  variant="h6" className="infoTitle">{title}</Typography>
