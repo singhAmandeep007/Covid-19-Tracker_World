@@ -26,7 +26,7 @@
 + Live data: Shows the most recent data, and updates automatically.
 + Tracking confirmed cases , recovered and deaths for each country using disease.sh api.
 + Sorting Tables for active cases,recovered and deaths.
-+ Map representation of Covid Impact in Each country.
++ Map representation of Covid Impact in Each country for each type along with detailed information on click.
 + Linear Graph to show increase in cases for each type per day.
 + Statistics: Including the Total number of confirmed, recovered, and deaths, per day in addition to total cases till now and percentage.
 + Responsive Application.
@@ -40,7 +40,7 @@
 + Cards with links to newspage in addition to brief information and image.
 ```
   </li>
-   <li> <i>Precautions and Useful Links/i> 
+   <li> <i>Precautions and Useful Links</i> 
   
   ```diff
 + Precautions to be taken.
